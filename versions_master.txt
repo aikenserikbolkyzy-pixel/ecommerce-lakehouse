@@ -3,10 +3,10 @@ os             : Ubuntu 26.04 LTS
 cpu cores      : 8
 ram            : 9 GB total, 9 GB available
 disk free (/)  : 909G
-java           : openjdk version "1.8.0_504"
+java           : openjdk version "1.8.0_514"
 JAVA_HOME      : /usr/lib/jvm/java-17-openjdk-amd64
 hadoop home    : /home/aykkenn/hadoop
-hadoop         : ERROR: Cannot execute /opt/hadoop/libexec/hadoop-config.sh.
+hadoop         : Hadoop 3.3.6
 spark home     : /home/aykkenn/spark
 spark          : 4.1.4  (Scala 2.13)
 iceberg jar    : iceberg-spark-runtime-4.1_2.13-1.11.0.jar 

@@ -1,0 +1,71 @@
+{
+  "run_utc": "2026-11-27T22:02:19+00:00",
+  "spark_version": "4.1.4",
+  "master": "spark://master:7077",
+  "default_parallelism": 24,
+  "checks": [
+    {
+      "check": "tasks run on all 3 laptops",
+      "passed": true,
+      "detail": "hosts=['master', 'worker1', 'worker2']"
+    },
+    {
+      "check": "input partitions ~ HDFS blocks",
+      "passed": true,
+      "detail": "partitions=110, blocks=111"
+    },
+    {
+      "check": "row count 2019-Nov.csv",
+      "passed": true,
+      "detail": "spark=67,501,979 manifest=67,501,979"
+    },
+    {
+      "check": "row count 2019-Oct.csv",
+      "passed": true,
+      "detail": "spark=42,448,764 manifest=42,448,764"
+    },
+    {
+      "check": "Iceberg namespaces",
+      "passed": true,
+      "detail": "lake: ['bronze', 'gold', 'silver']"
+    },
+    {
+      "check": "Iceberg snapshots",
+      "passed": true,
+      "detail": "2 snapshots"
+    },
+    {
+      "check": "Iceberg time travel",
+      "passed": true,
+      "detail": "current=3 rows, VERSION AS OF first snapshot=2 rows"
+    },
+    {
+      "check": "Iceberg data stored in HDFS warehouse",
+      "passed": true,
+      "detail": "hdfs://master:9000/warehouse/iceberg/bronze/phase1_smoke_test/data/ts_day=2019-11-02/00000-237-78441fb4-3471-4ab1-bd85-763035d0b91b-0-00001.parquet"
+    }
+  ],
+  "task_hosts": [
+    "master",
+    "worker1",
+    "worker2"
+  ],
+  "input_partitions": 110,
+  "full_scan_seconds": 47.4,
+  "rows_per_file": {
+    "2019-Nov.csv": 67501979,
+    "2019-Oct.csv": 42448764
+  },
+  "rows_per_event_type": {
+    "cart": 3955446,
+    "view": 104335509,
+    "purchase": 1659788
+  },
+  "total_rows": 109950743,
+  "iceberg_namespaces": [
+    "bronze",
+    "gold",
+    "silver"
+  ],
+  "all_passed": true
+}

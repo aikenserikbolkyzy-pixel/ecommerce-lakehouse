@@ -1,0 +1,2 @@
+2019-Nov.csv  replication=3  blocksize=134217728  bytes=9006762395
+2019-Oct.csv  replication=3  blocksize=134217728  bytes=5668612855

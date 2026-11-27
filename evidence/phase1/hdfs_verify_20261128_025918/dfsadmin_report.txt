@@ -1,0 +1,82 @@
+Configured Capacity: 2235959947264 (2.03 TB)
+Present Capacity: 1985811197729 (1.81 TB)
+DFS Remaining: 1941381520384 (1.77 TB)
+DFS Used: 44429677345 (41.38 GB)
+DFS Used%: 2.24%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (3):
+
+Name: 192.168.100.15:9866 (worker2)
+Hostname: worker2
+Decommission Status : Normal
+Configured Capacity: 1070363758592 (996.85 GB)
+DFS Used: 14790578176 (13.77 GB)
+Non DFS Used: 38250217472 (35.62 GB)
+DFS Remaining: 962216711680 (896.13 GB)
+DFS Used%: 1.38%
+DFS Remaining%: 89.90%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Sat Nov 28 02:59:37 ORAT 2026
+Last Block Report: Sat Nov 28 02:36:24 ORAT 2026
+Num of Blocks: 113
+
+
+Name: 192.168.100.47:9866 (master)
+Hostname: master
+Decommission Status : Normal
+Configured Capacity: 1070363758592 (996.85 GB)
+DFS Used: 14790558051 (13.77 GB)
+Non DFS Used: 59253989021 (55.18 GB)
+DFS Remaining: 941212444160 (876.57 GB)
+DFS Used%: 1.38%
+DFS Remaining%: 87.93%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Sat Nov 28 02:59:37 ORAT 2026
+Last Block Report: Sat Nov 28 01:52:32 ORAT 2026
+Num of Blocks: 113
+
+
+Name: 192.168.100.67:9866 (worker1)
+Hostname: worker1
+Decommission Status : Normal
+Configured Capacity: 95232430080 (88.69 GB)
+DFS Used: 14848541118 (13.83 GB)
+Non DFS Used: 37558230594 (34.98 GB)
+DFS Remaining: 37952364544 (35.35 GB)
+DFS Used%: 15.59%
+DFS Remaining%: 39.85%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Sat Nov 28 02:59:38 ORAT 2026
+Last Block Report: Sat Nov 28 01:52:32 ORAT 2026
+Num of Blocks: 113
+
+

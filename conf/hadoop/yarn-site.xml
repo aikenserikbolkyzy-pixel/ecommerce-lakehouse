@@ -30,7 +30,7 @@
   <!-- Resources each laptop offers to YARN (values for 16 GB / 4+ core laptops) -->
   <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
-    <value>6144</value>
+    <value>2048</value>
   </property>
 
   <property>
@@ -45,7 +45,7 @@
 
   <property>
     <name>yarn.scheduler.maximum-allocation-mb</name>
-    <value>6144</value>
+    <value>2048</value>
   </property>
 
   <property>

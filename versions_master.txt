@@ -1,0 +1,16 @@
+host           : master   ip: 192.168.100.47
+os             : Ubuntu 26.04 LTS
+cpu cores      : 8
+ram            : 9 GB total, 9 GB available
+disk free (/)  : 909G
+java           : openjdk version "1.8.0_504"
+JAVA_HOME      : /usr/lib/jvm/java-17-openjdk-amd64
+hadoop home    : /home/aykkenn/hadoop
+hadoop         : ERROR: Cannot execute /opt/hadoop/libexec/hadoop-config.sh.
+spark home     : /home/aykkenn/spark
+spark          : 4.1.4  (Scala 2.13)
+iceberg jar    : iceberg-spark-runtime-4.1_2.13-1.11.0.jar 
+needed jar     : iceberg-spark-runtime-4.1_2.13-<ICEBERG_VERSION>.jar
+spark's hadoop : hadoop-client-api-3.4.2.jar
+python3        : Python 3.14.4
+pip pyspark    : not pip-installed (fine: spark-submit uses $SPARK_HOME/python)

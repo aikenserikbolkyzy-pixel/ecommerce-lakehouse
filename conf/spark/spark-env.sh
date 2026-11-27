@@ -5,6 +5,7 @@
 # =====================================================================
 
 # Java (non-interactive SSH does not read ~/.bashrc)
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 if [ -z "${JAVA_HOME:-}" ] || [ ! -x "${JAVA_HOME}/bin/java" ]; then
   export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(command -v java)")")")"
 fi
@@ -30,8 +31,8 @@ export SPARK_MASTER_WEBUI_PORT=8080
 # Standalone workers (one per laptop). Values for 16 GB laptops; see README §2.
 export SPARK_WORKER_CORES=4
 case "$(hostname -s)" in
-  master) export SPARK_WORKER_MEMORY=4g ;;   # master also runs NameNode, RM, driver
-  *)      export SPARK_WORKER_MEMORY=6g ;;
+  master) export SPARK_WORKER_MEMORY=1500m ;;   # master also runs NameNode, RM, driver
+  *)      export SPARK_WORKER_MEMORY=3g ;;
 esac
 export SPARK_WORKER_WEBUI_PORT=8081
 export SPARK_DAEMON_MEMORY=512m

@@ -2,7 +2,7 @@
 # Daemons are started over non-interactive SSH, which does NOT read ~/.bashrc,
 # so JAVA_HOME must be set here (otherwise: "ERROR: JAVA_HOME is not set").
 # To pin a version, replace the block below with e.g.:
-#   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 if [ -z "${JAVA_HOME:-}" ] || [ ! -x "${JAVA_HOME}/bin/java" ]; then
   export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(command -v java)")")")"
 fi

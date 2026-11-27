@@ -1,0 +1,14 @@
+# >>> bigdata-cluster >>>  (managed by scripts/04_install_configs.sh — edit the copy in the project)
+# Daemons are started over non-interactive SSH, which does NOT read ~/.bashrc,
+# so JAVA_HOME must be set here (otherwise: "ERROR: JAVA_HOME is not set").
+# To pin a version, replace the block below with e.g.:
+#   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+if [ -z "${JAVA_HOME:-}" ] || [ ! -x "${JAVA_HOME}/bin/java" ]; then
+  export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(command -v java)")")")"
+fi
+export HADOOP_HOME=/opt/hadoop
+export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+export HADOOP_LOG_DIR=/bigdata/hadoop/logs
+export HADOOP_PID_DIR=/bigdata/hadoop/pids     # /tmp is wiped on reboot -> "no namenode to stop"
+export HADOOP_HEAPSIZE_MAX=1g                  # cap each daemon (NN, DN, RM, NM) at 1 GB heap
+# <<< bigdata-cluster <<<

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  yarn-site.xml — identical on master, worker1, worker2
+  ResourceManager = master. NodeManagers = master, worker1, worker2.
+
+  NOTE: Spark jobs in this project run on Spark Standalone (spark://master:7077).
+  YARN runs alongside as the Hadoop resource manager and as an alternative
+  (spark-submit with master "yarn"). Do not run YARN jobs and Standalone jobs at the
+  same time on 16 GB laptops: both would claim the same RAM.
+-->
+<configuration>
+
+  <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>master</value>
+    <description>ResourceManager UI: http://master:8088</description>
+  </property>
+
+  <property>
+    <name>yarn.resourcemanager.bind-host</name>
+    <value>0.0.0.0</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+  </property>
+
+  <!-- Resources each laptop offers to YARN (values for 16 GB / 4+ core laptops) -->
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>6144</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>4</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>512</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>6144</value>
+  </property>
+
+  <property>
+    <name>yarn.scheduler.maximum-allocation-vcores</name>
+    <value>4</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+    <description>Stops YARN from killing Spark/Java containers for virtual-memory
+      overuse, a common false alarm on Ubuntu.</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value>/bigdata/hadoop/yarn/local</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log-dirs</name>
+    <value>/bigdata/hadoop/yarn/logs</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name>
+    <value>95.0</value>
+    <description>Default 90% marks a laptop "unhealthy" once its disk is 90% full.</description>
+  </property>
+
+  <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.env-whitelist</name>
+    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,PATH,LANG,TZ,HADOOP_MAPRED_HOME</value>
+  </property>
+
+</configuration>

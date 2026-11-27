@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  hdfs-site.xml — identical on master, worker1, worker2
+  NameNode = master. DataNodes = master, worker1, worker2 (see "workers").
+-->
+<configuration>
+
+  <!-- ===================== Core requirements ===================== -->
+  <property>
+    <name>dfs.replication</name>
+    <value>3</value>
+    <description>Every block is stored on all 3 DataNodes (one copy per laptop).</description>
+  </property>
+
+  <property>
+    <name>dfs.blocksize</name>
+    <value>134217728</value>
+    <description>128 MB blocks: 2019-Nov.csv (~9.0 GB) is about 68 blocks and
+      2019-Oct.csv (~5.7 GB) about 43 blocks, so Spark gets ~111 input splits.</description>
+  </property>
+
+  <!-- ===================== Storage directories ===================== -->
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///bigdata/hadoop/hdfs/namenode</value>
+    <description>NameNode metadata (fsimage + edits). Used on master only.</description>
+  </property>
+
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///bigdata/hadoop/hdfs/datanode</value>
+    <description>Block storage on every DataNode.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.checkpoint.dir</name>
+    <value>file:///bigdata/hadoop/hdfs/namesecondary</value>
+  </property>
+
+  <!-- ===================== Addresses ===================== -->
+  <property>
+    <name>dfs.namenode.rpc-bind-host</name>
+    <value>0.0.0.0</value>
+    <description>Listen on all interfaces, so DataNodes can connect even if
+      "master" resolves to a loopback address on master itself.</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.servicerpc-bind-host</name>
+    <value>0.0.0.0</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.http-address</name>
+    <value>master:9870</value>
+    <description>NameNode web UI: http://master:9870</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.http-bind-host</name>
+    <value>0.0.0.0</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.secondary.http-address</name>
+    <value>master:9868</value>
+    <description>Explicit host (the default 0.0.0.0 makes start-dfs.sh try "ssh 0.0.0.0").</description>
+  </property>
+
+  <property>
+    <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+    <value>false</value>
+    <description>Laptops have no reverse DNS; /etc/hosts is enough.</description>
+  </property>
+
+  <!-- ===================== Small-cluster safety ===================== -->
+  <property>
+    <name>dfs.client.block.write.replace-datanode-on-failure.enable</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.client.block.write.replace-datanode-on-failure.policy</name>
+    <value>NEVER</value>
+    <description>Recommended by Hadoop for clusters of 3 nodes or fewer:
+      with replication=3 and 3 DataNodes there is no spare node to swap in,
+      so the default policy would abort writes when one laptop drops off Wi-Fi.
+      The NameNode re-replicates the missing copy when the node returns.</description>
+  </property>
+
+  <property>
+    <name>dfs.client.block.write.replace-datanode-on-failure.best-effort</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.du.reserved</name>
+    <value>10737418240</value>
+    <description>Keep 10 GB per laptop free for the OS and Spark shuffle spill.</description>
+  </property>
+
+  <!-- ===================== Lab convenience ===================== -->
+  <property>
+    <name>dfs.permissions.enabled</name>
+    <value>false</value>
+    <description>The three laptops may use different Linux user names. Turning HDFS
+      permission checks off avoids AccessControlException when Spark executors
+      (running as each laptop's user) write Iceberg files. Lab cluster only.</description>
+  </property>
+
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+    <description>Lets the NameNode UI file browser list and download files.</description>
+  </property>
+
+</configuration>

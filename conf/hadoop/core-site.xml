@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  core-site.xml — identical on master, worker1, worker2
+  Installed to $HADOOP_HOME/etc/hadoop/ by scripts/04_install_configs.sh
+-->
+<configuration>
+
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://master:9000</value>
+    <description>NameNode RPC endpoint. hdfs CLI, Spark and Iceberg resolve
+      paths such as /data/raw/ecommerce against this URI.</description>
+  </property>
+
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/bigdata/hadoop/tmp</value>
+    <description>Base for Hadoop temporary files. Default is /tmp, which
+      Ubuntu wipes on reboot.</description>
+  </property>
+
+  <property>
+    <name>io.file.buffer.size</name>
+    <value>131072</value>
+    <description>128 KB read/write buffer (default 4 KB) for large sequential files.</description>
+  </property>
+
+  <property>
+    <name>fs.trash.interval</name>
+    <value>1440</value>
+    <description>Minutes a file deleted with "hdfs dfs -rm" stays in .Trash.
+      Protects the raw zone from accidental deletes. Use -skipTrash to free disk at once.</description>
+  </property>
+
+</configuration>

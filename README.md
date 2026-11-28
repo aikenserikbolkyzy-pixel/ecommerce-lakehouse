@@ -1,370 +1,224 @@
-# Distributed Clickstream Lakehouse — Phase 1
-**Cluster networking · HDFS (replication = 3) · YARN · Spark Standalone + Iceberg · Raw ingestion**
+# Distributed Clickstream Lakehouse on a 3-Laptop Cluster
 
-Team: Aiken Otargali · Zhuldyzay Kalka · Inkar Tlegenova — Distributed Big Data Systems
+**CSS 439 Distributed Big Data Systems · SDU University** · Aiken Otargali (master) · Zhuldyzay Kalka (worker1) · Inkar Tlegenova (worker2)
 
-Pipeline position: **Local ZIP → unzip → HDFS (128 MB blocks, ×3)** → Spark → Iceberg (Bronze/Silver/Gold) → MLlib → Pandas/Matplotlib → scalability experiment.
-Phase 1 delivers the bold part, plus a smoke test proving that Spark and Iceberg work on top of it.
+End-to-end pipeline on 110 million real e-commerce events (Kaggle / REES46, Oct–Nov 2019, 14.7 GB):
+
+```
+Kaggle CSV ─► HDFS (3 replicas) ─► Spark ─► Apache Iceberg (Bronze → Silver → Gold) ─► Spark MLlib ─► results + charts
+              Phase 1                Phase 2                                            Phase 3         Phase 4
+```
+
+| | |
+|---|---|
+| Cluster | 3 laptops on one Wi-Fi: 2 × WSL2 Ubuntu (mirrored networking) + 1 × VirtualBox Ubuntu (bridged) |
+| Software | Hadoop 3.3.6 (Java 8) · Spark 4.1.4 / Scala 2.13 (Java 17) · Iceberg 1.11.0 · Python 3.14 |
+| Data | 109,950,743 raw events → 109,563,335 cleaned events, 23.0 M sessions, 5.3 M users |
+
+Phase documents: [`README_Phase1.md`](README_Phase1.md) (cluster + HDFS), [`README_Phase2.md`](README_Phase2.md)
+(Spark + Iceberg), [`README_Phase3.md`](README_Phase3.md) (ML). This file: project map, Phase 4 and the demo runbook.
+
+---
+
+## 1. Directory tree
 
 ```
 ecommerce-lakehouse/
-├── cluster.env                  # ONLY file you edit: IPs + Linux user names
+├── README.md                         ← this file: map, Phase 4, live demo runbook
+├── README_Phase1.md  README_Phase2.md  README_Phase3.md
+├── cluster.env                       IPs, users, paths, HDFS layout (single source of truth)
 ├── conf/
-│   ├── hadoop/  core-site.xml  hdfs-site.xml  yarn-site.xml  mapred-site.xml  workers  hadoop-env.sh.append
-│   └── spark/   spark-defaults.conf  spark-env.sh  workers
-├── scripts/
-│   ├── 00_check_versions.sh     # every node  – versions, RAM, disk, matching Iceberg jar
-│   ├── 01_network_setup.sh      # every node  – hostname, /etc/hosts, sshd, firewall, NTP, no-suspend
-│   ├── 02_ssh_setup.sh          # master      – passwordless SSH to all 3 nodes
-│   ├── 03_prepare_node.sh       # every node  – /opt symlinks, /bigdata dirs, ~/.bashrc
-│   ├── 04_install_configs.sh    # master      – push configs + Iceberg jar to all nodes
-│   ├── 05_format_namenode.sh    # master      – once
-│   ├── 06_start_cluster.sh      # master      – HDFS + YARN + Spark + History Server
-│   ├── 07_stage_dataset.sh      # master      – unzip + header check + manifest (sizes, row counts)
-│   ├── 08_ingest_hdfs.sh        # master      – upload to /data/raw/ecommerce, wait for 3 replicas
-│   ├── 09_verify_hdfs.sh        # master      – dfsadmin -report, fsck -files -blocks -locations, PASS/FAIL
-│   ├── 10_run_smoke_test.sh     # master      – Spark on 3 nodes + Iceberg catalog test
+│   ├── hadoop/   core-site.xml  hdfs-site.xml  yarn-site.xml  mapred-site.xml  workers  hadoop-env.sh.append
+│   └── spark/    spark-env.sh  spark-defaults.conf  workers
+├── scripts/                          cluster operations (bash, run on master unless noted)
+│   ├── 00_check_versions.sh          every node: versions, RAM, disk
+│   ├── 01_network_setup.sh           every node: hostname, /etc/hosts, SSH server
+│   ├── 02_ssh_setup.sh               master: password-less SSH to all nodes
+│   ├── 03_prepare_node.sh            every node: /opt/hadoop, /opt/spark, /bigdata layout
+│   ├── 04_install_configs.sh         master: push Hadoop/Spark configs + Iceberg jar to all nodes
+│   ├── 05_format_namenode.sh         master: ONE time only
+│   ├── 06_start_cluster.sh           HDFS + YARN + Spark Standalone + History Server
+│   ├── 07_stage_dataset.sh  08_ingest_hdfs.sh  09_verify_hdfs.sh  10_run_smoke_test.sh
+│   ├── 11_run_phase2.sh              Phase 2 runner (Bronze, Silver, Iceberg features, Gold)
+│   ├── 12_run_phase3.sh              Phase 3 runner (LogReg, ALS)
 │   ├── cluster_status.sh  stop_cluster.sh  lib.sh
-└── jobs/phase1_smoke_test.py
+├── jobs/
+│   ├── phase1_smoke_test.py          Spark + HDFS + Iceberg smoke test
+│   ├── phase2/
+│   │   ├── common.py                 SparkSession, Iceberg catalog `local`, table names, helpers
+│   │   ├── 01_ingest_bronze.py       CSV → bronze_events (days(event_time), event_type)
+│   │   ├── 02_clean_silver.py        DQ, filter, dedup, sessionization → silver_events
+│   │   ├── 03_iceberg_features_demo.py  time travel + rollback, schema evolution, MERGE INTO
+│   │   └── 04_gold_aggregations.py   funnel, RFM, hourly trends → gold_* + CSV
+│   ├── phase3/
+│   │   ├── 05_ml_purchase_prediction.py  weighted LogisticRegression (cart → purchase)
+│   │   ├── 05b_name_coefficients.py      readable coefficient names from the saved model
+│   │   └── 06_ml_recommender_als.py      implicit ALS recommender + ranking metrics
+│   └── phase4/
+│       ├── 07_run_benchmark.sh       scalability (p = 1, 2, 4, 8 × 3 runs) + CSV vs Iceberg
+│       ├── 07_benchmark_workload.py  benchmark workload / summary (S_p, E_p)
+│       ├── 07b_shuffle_analysis.py   local vs Wi-Fi shuffle traffic per run (History Server API)
+│       ├── 08_visualize_results.py   pandas + matplotlib charts from ./results (300 dpi)
+│       ├── 09_demo_iceberg.py        live Iceberg demo (snapshots, time travel, delete + rollback)
+│       └── 09_demo.sh                runs the live demo
+├── results/                          SMALL outputs only (committed to Git with git add -f)
+│   ├── gold_funnel_metrics.csv  gold_rfm_segments_summary.csv  gold_rfm_rf_grid.csv  gold_hourly_trends.csv
+│   ├── logreg_metrics.json  logreg_coefficients.csv  logreg_curve_points.csv
+│   ├── als_metrics.json  als_sample_recommendations.csv
+│   ├── benchmark_raw.jsonl  benchmark_results.csv  benchmark_shuffle.csv
+│   └── plots/   01_conversion_funnel.png … 10_hourly_heatmap.png
+└── evidence/                         copies of /bigdata/evidence/* (JSON per run, plans, logs)
+```
+
+Data that lives on the cluster, not in Git:
+
+| Where | What |
+|---|---|
+| HDFS `/data/raw/ecommerce/` | `2019-Oct.csv`, `2019-Nov.csv` (111 blocks × 3 replicas) |
+| HDFS `/warehouse/iceberg/ecommerce/` | Iceberg tables: `bronze_events`, `silver_events`, `daily_category_summary`, `daily_category_increment`, `gold_funnel_metrics`, `gold_rfm_segments`, `gold_rfm_segment_summary`, `gold_rfm_rf_grid`, `gold_hourly_trends`, `ml_cart_features`, `ml_user_item_interactions`, `gold_user_recommendations` |
+| HDFS `/models/` | `logreg_cart_purchase`, `als_implicit` |
+| HDFS `/spark-logs/` | Spark event logs (History Server) |
+| local `/bigdata/` on each laptop | DataNode blocks, Spark scratch, logs, `/bigdata/evidence/` |
+
+## 2. Where distributed computing is used
+
+| Step | Distributed work | Evidence |
+|---|---|---|
+| Storage | HDFS splits 14.7 GB into 111 × 128 MB blocks, 3 replicas on 3 laptops; survived a worker dropping out during ingestion | `09_verify_hdfs.sh`, `hdfs fsck` |
+| Bronze | 110 parallel read tasks, one per HDFS block, data-local, no shuffle | Spark UI stages, `01_*.json` |
+| Silver | one hash shuffle by `(user_id, user_session)` serves dedup + window sessionization | `02_silver_plan_ecommerce.txt` |
+| Gold | groupBy shuffles, distributed `percentile_approx`, HyperLogLog distinct counts | `04_*.json` |
+| ML | window feature engineering, Spark ML pipeline, distributed L-BFGS (LogReg), block ALS | `05_*.json`, `06_*.json` |
+| Benchmark | same workload on 1 → 8 executor cores across 3 laptops | `results/benchmark_results.csv`, `03_scalability.png` |
+
+---
+
+## 3. Phase 4 — benchmark and charts
+
+### 3.1 Scalability + storage benchmark (≈ 45–70 min)
+
+```bash
+cd ~/ecommerce-lakehouse
+./scripts/cluster_status.sh                     # 3/3 everywhere
+chmod +x jobs/phase4/*.sh
+./jobs/phase4/07_run_benchmark.sh               # warm-up + scaling + storage + summary
+```
+
+* **Scalability:** workload = filter (2 weeks of Silver, partition-pruned, `price > 0`) → shuffle-heavy
+  session aggregation `groupBy(user_id, user_session)` → category revenue `groupBy(main_category)`.
+  For p = 1, 2, 4, 8: `--total-executor-cores p`, 1-core executors with 700 MB each (equal memory per core),
+  `spark.sql.shuffle.partitions = 4p`, AQE coalescing off. Fresh `spark-submit` per run, timer starts after
+  all p executors registered, one warm-up run, runs interleaved (run 1: p1 p2 p4 p8, run 2: …).
+  Result: median $T_p$, $S_p = T_1/T_p$, $E_p = S_p/p$.
+* **Storage:** raw CSV vs Iceberg `bronze_events`, 3 interleaved runs, results checked equal.
+  Q1 = purchases of one day (Iceberg reads 1 partition), Q2 = revenue per event type over all rows
+  (no pruning possible; Iceberg reads only 2 of 9 columns).
+* Output: `results/benchmark_results.csv` (`record_type` = raw / summary), raw lines in
+  `results/benchmark_raw.jsonl`, logs in `/bigdata/evidence/phase4/logs/`.
+* Partial runs: `./jobs/phase4/07_run_benchmark.sh scaling | storage | summarize`;
+  start over with `FRESH=1`; other settings `RUNS=3 PS="1 2 4 8" START=2019-11-01 END=2019-11-15`.
+
+### 3.2 Why the curve looks like that: shuffle traffic per run
+
+```bash
+python3 jobs/phase4/07b_shuffle_analysis.py                 # reads the History Server on :18080
+```
+For every scaling run: executors per laptop, shuffle MB read locally vs over Wi-Fi, fetch-wait time,
+spill to disk → `results/benchmark_shuffle.csv` (raw + median per p) and chart 11.
+
+### 3.3 Charts
+
+```bash
+sudo apt install -y python3-pandas python3-matplotlib      # once, on master
+python3 jobs/phase4/08_visualize_results.py                 # -> results/plots/*.png (300 dpi)
+explorer.exe "$(wslpath -w results/plots)"                  # open the folder in Windows
+```
+
+| File | Shows |
+|---|---|
+| `01_conversion_funnel.png` | view → cart → purchase sessions, overall + top 8 categories |
+| `02_rfm_segments.png` | share of buyers vs share of revenue per RFM segment |
+| `03_scalability.png` | $T_p$ and $S_p$ vs ideal linear for p = 1, 2, 4, 8 |
+| `04_storage_format.png` | raw CSV vs Iceberg latency for Q1 (pruning) and Q2 (columnar) |
+| `05_logreg_roc_pr.png` · `06_logreg_confusion_matrix.png` · `07_logreg_coefficients.png` | purchase prediction model |
+| `08_als_vs_popularity.png` | ALS vs most-popular: Precision / Recall / NDCG @10 |
+| `09_daily_activity.png` · `10_hourly_heatmap.png` | daily views / purchases (15 Nov gap), weekday × hour |
+| `11_shuffle_network.png` | shuffle data read locally vs over Wi-Fi, fetch-wait time per p |
+
+### 3.4 Save to Git
+
+```bash
+mkdir -p evidence && cp -r /bigdata/evidence/phase4 evidence/
+git add -A && git add -f results/*.csv results/*.jsonl results/plots/*.png
+git commit -m "Phase 4: scalability + storage benchmark, charts, demo runbook" && git push
 ```
 
 ---
 
-## 1. Topology
+## 4. Live demo runbook (10 minutes)
 
-| Laptop | Hostname | HDFS | YARN | Spark Standalone | Also |
-|---|---|---|---|---|---|
-| Node 1 | `master` | NameNode, SecondaryNameNode, DataNode | ResourceManager, NodeManager | Master, Worker, driver | History Server, local staging |
-| Node 2 | `worker1` | DataNode | NodeManager | Worker | |
-| Node 3 | `worker2` | DataNode | NodeManager | Worker | |
+### Before the teacher arrives (T − 30 min)
 
-| Service | Port | Web UI |
-|---|---|---|
-| NameNode RPC / UI | 9000 / 9870 | http://master:9870 |
-| DataNode data / UI | 9866 / 9864 | |
-| YARN ResourceManager | 8032 / 8088 | http://master:8088 |
-| Spark Master | 7077 / 8080 | http://master:8080 |
-| Spark Worker UI | 8081 | http://worker1:8081 |
-| Spark History Server | 18080 | http://master:18080 |
-| Running Spark app | 4040 | http://master:4040 |
+- [ ] All 3 laptops: charger in, Windows sleep = **Never**, lid close = **Do nothing**, same Wi-Fi, `hostname -I` unchanged (else update `cluster.env` + rerun `01_network_setup.sh` on all).
+- [ ] Aiken's and Inkar's Ubuntu terminals open (closing them stops WSL).
+- [ ] Master: `cd ~/ecommerce-lakehouse && ./scripts/06_start_cluster.sh && ./scripts/cluster_status.sh` → `3/3 DataNodes`, `3/3 NodeManagers`, `3/3 workers ALIVE`.
+- [ ] Dry run of the Iceberg demo once: `./jobs/phase4/09_demo.sh` (it restores the table at the end).
+- [ ] Browser tabs open (use IPs, Windows does not know `master`):
+      `http://192.168.100.47:9870` (HDFS) · `http://192.168.100.47:8080` (Spark Master) · `http://192.168.100.47:18080` (History).
+- [ ] `results/plots/` open in Windows Explorer; slides open; screenshots in a folder as a backup.
+- [ ] Two terminals on master, font large (Ctrl + / zoom), `clear` before each step.
 
-**Cluster manager choice.** Spark jobs run on **Spark Standalone** (`spark://master:7077`); this matches the experiment in the proposal (`--total-executor-cores N`). YARN is started too, as Hadoop's resource manager and as an alternative (`--master yarn`). On 16 GB laptops, don't run YARN jobs and Standalone jobs at the same time, because both would claim the same RAM.
+### The 10 minutes
 
-**Replication = 3 on 3 DataNodes** means every laptop stores a full copy of every block. Consequences you can cite in the report:
-- HDFS data stays readable if any two DataNodes are down (the NameNode on `master` remains a single point of failure).
-- Every Spark read task is data-local (`NODE_LOCAL`/`PROCESS_LOCAL` in the Spark UI → Stages → *Locality Level*).
-- Storage cost is 3×: ~14.7 GB of CSV uses ~44 GB of cluster disk.
-- Each block crosses the network twice during upload (master → worker1 → worker2 pipeline), so upload speed depends on the LAN.
-
----
-
-## 2. Prerequisites and sizing
-
-**Network**
-- All 3 laptops on the **same LAN**. Many university Wi-Fi networks block laptop-to-laptop traffic ("client isolation"). If `ping worker1` fails, use a phone hotspot, or (better) a small router or switch with Ethernet cables.
-- Give each laptop a **fixed IP**: a DHCP reservation in the router, or *Settings → Network → IPv4 → Manual*. If an IP changes, update `cluster.env`, re-run `01` on all nodes, then restart the cluster.
-
-**Disk (free space)**
-
-| Node | Needed | What uses it |
-|---|---|---|
-| master | ≥ 55 GB | zip (~5 GB) + unzipped CSV (14.7 GB) + full HDFS replica (14.7 GB) + Iceberg layers + Spark spill |
-| worker1, worker2 | ≥ 35 GB | full HDFS replica + Iceberg layers + Spark spill |
-
-Once `09_verify_hdfs.sh` passes, you can delete `/bigdata/staging/ecommerce/*.csv` (keep the zip) to recover 14.7 GB on master.
-
-**RAM.** The shipped files assume 16 GB laptops with 4 or more CPU threads. For other sizes, edit these values:
-
-| Laptop RAM | `SPARK_WORKER_MEMORY` master / workers (spark-env.sh) | `spark.executor.memory` / `.cores` | `spark.driver.memory` | `yarn.nodemanager.resource.memory-mb` |
+| Time | Who | Show | Commands / clicks | Say |
 |---|---|---|---|---|
-| 8 GB | 1500m / 3g | 1400m / 2 | 1g | 2048 (do not run YARN jobs) |
-| **16 GB (default)** | **4g / 6g** | **2g / 2** | **2g** | **6144** |
-| 32 GB | 10g / 18g | 4g / 2 (set `SPARK_WORKER_CORES=8` if the CPU has 8+ threads) | 4g | 12288 |
+| 0:00–1:00 | Aiken | architecture slide | — | 3 laptops, HDFS → Spark → Iceberg → MLlib; 110 M events |
+| 1:00–3:00 | Aiken | **HDFS: 3 replicas on 3 laptops** | Browser `:9870` → *Datanodes*: 3 live nodes, similar used space on each. Terminal: see block below | "each 128 MB block is stored on all three laptops" |
+| 3:00–4:30 | Zhuldyzay | **Spark Master: 3 workers** | Browser `:8080` → 3 workers ALIVE, 12 cores; `:18080` → an app → *Executors* tab: executors on 3 IPs; *Stages*: shuffle read/write | "work is spread across all three machines" |
+| 4:30–6:30 | Inkar | **Iceberg time travel live** | `./jobs/phase4/09_demo.sh` (start it, talk while Spark starts ~30 s) | snapshots → MERGE before/after → live DELETE → `VERSION AS OF` still has the rows → rollback |
+| 6:30–8:30 | Inkar | **ML metrics + charts** | `python3 -m json.tool results/logreg_metrics.json \| head -25` · `python3 -m json.tool results/als_metrics.json \| head -40` · open `05`, `08`, `01`, `02` PNGs | ROC-AUC 0.72 / PR-AUC 0.66 vs 0.43 baseline; ALS 2.3× better than popularity |
+| 8:30–9:30 | Zhuldyzay | **scalability + storage** | open `03_scalability.png`, `04_storage_format.png` | speed-up and efficiency; why not linear (Wi-Fi shuffle, startup); Iceberg pruning + columnar |
+| 9:30–10:00 | all | limitations + questions | — | Wi-Fi bottleneck, 15 Nov purchase gap, ALS on 20 % of users |
 
-On 8 GB laptops, develop on the 10% sample first, as planned in the proposal.
+**HDFS commands for 1:00–3:00** (terminal on master):
 
-**Software.** Already installed on all nodes: Java, Hadoop, Spark, Python 3. Run `00` on each laptop and compare the outputs (step 3).
-
----
-
-## 3. Step-by-step
-
-> Every step names **where** to run it. Run the scripts from the project root (`cd ecommerce-lakehouse`). The scripts stop at the first error and print why.
-
-### Step 1 — Fill in `cluster.env` (one laptop)
-Find each laptop's IP with `hostname -I` and its user name with `whoami`. Replace the 6 placeholders:
 ```bash
-MASTER_IP="192.168.1.10"     WORKER1_IP="192.168.1.11"     WORKER2_IP="192.168.1.12"
-MASTER_USER="aiken"          WORKER1_USER="zhuldyzay"      WORKER2_USER="inkar"
+hdfs dfs -ls -h /data/raw/ecommerce
+hdfs fsck /data/raw/ecommerce/2019-Oct.csv -files -blocks -locations | grep -m 3 "len="
+hdfs fsck /data/raw/ecommerce | grep -E "Total blocks|Average block replication|Under-replicated|Status"
+hdfs dfs -du -h -s /warehouse/iceberg/ecommerce
 ```
+Each `len=134217728 Live_repl=3 [...]` line lists three DataNodes: 192.168.100.47 (master),
+192.168.100.67 (worker1), 192.168.100.15 (worker2).
 
-### Step 2 — Put the same project folder on all 3 laptops
-Use a Git repo (recommended, since the code has to be submitted anyway) or a USB stick. The folder can live anywhere, e.g. `~/ecommerce-lakehouse`.
-```bash
-chmod +x scripts/*.sh conf/spark/spark-env.sh
-```
+### If something goes wrong during the demo
 
-### Step 3 — Check versions (every laptop)
-```bash
-./scripts/00_check_versions.sh
-```
-Compare the three `versions_<host>.txt` files. These must match on all nodes:
-- **Java** (same major version). Spark 3.5 runs on Java 8/11/17; Spark 4.x needs Java 17+; Iceberg 1.7+ needs Java 11+. Hadoop 3.3/3.4 is certified on Java 8/11. If Hadoop misbehaves on Java 17, pin Java 11 for Hadoop in `hadoop-env.sh.append` and keep Spark on 17 in `spark-env.sh` (they are set separately).
-- **Hadoop**, **Spark + Scala**, and **Python 3 minor version** (PySpark fails with *"Python in worker has different version"* otherwise).
-- **Iceberg runtime jar** — exactly one, named `iceberg-spark-runtime-<Spark major.minor>_<Scala>-<Iceberg version>.jar`:
-
-| Spark (from `00`) | Scala | Jar to use |
-|---|---|---|
-| 3.5.x | 2.12 | `iceberg-spark-runtime-3.5_2.12-1.10.0.jar` (any 1.x ≥ 1.4 works) |
-| 3.5.x | 2.13 | `iceberg-spark-runtime-3.5_2.13-1.10.0.jar` |
-| 4.0.x | 2.13 | `iceberg-spark-runtime-4.0_2.13-1.10.0.jar` (Iceberg ≥ 1.10) |
-| 4.1.x | 2.13 | `iceberg-spark-runtime-4.1_2.13-1.11.0.jar` (Iceberg ≥ 1.11) |
-
-Manual checks if you prefer them:
-```bash
-java -version
-hadoop version | head -1
-spark-submit --version 2>&1 | grep -E "version|Scala"
-ls $SPARK_HOME/jars | grep -E "^spark-core_|^iceberg-spark-runtime"   # spark-core_<scala>-<spark>.jar
-python3 --version
-```
-If the jar is missing, it is enough to download it **on master only**; step 7 copies it to the other two:
-```bash
-wget -P $SPARK_HOME/jars https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-spark-runtime-3.5_2.12/1.10.0/iceberg-spark-runtime-3.5_2.12-1.10.0.jar
-```
-Write the final versions into the report ("fixed, documented versions" is a risk mitigation in your proposal).
-
-### Step 4 — Network setup (every laptop, its own role)
-```bash
-./scripts/01_network_setup.sh master     # on Node 1
-./scripts/01_network_setup.sh worker1    # on Node 2
-./scripts/01_network_setup.sh worker2    # on Node 3
-```
-This script:
-- renames the laptop (hostname);
-- writes this block to `/etc/hosts`:
-  ```
-  <MASTER_IP>   master
-  <WORKER1_IP>  worker1
-  <WORKER2_IP>  worker2
-  ```
-- comments out Ubuntu's `127.0.1.1 <hostname>` line (otherwise the NameNode listens on loopback only);
-- installs and starts `openssh-server`;
-- allows the other two IPs through `ufw`;
-- enables NTP and disables suspend (so closing the lid does not kill the DataNode).
-
-Open a new terminal afterwards so the prompt shows the new hostname. A one-off `sudo: unable to resolve host` warning during the rename is harmless.
-
-### Step 5 — Passwordless SSH (master)
-```bash
-./scripts/02_ssh_setup.sh
-```
-This creates an ed25519 key and writes `~/.ssh/config` with each laptop's user name. It then runs `ssh-copy-id` to `master`, `worker1` and `worker2`; you type each password once. It finishes by checking that `ssh worker1 hostname` returns `worker1` with no password prompt. Running it on the workers too (all-to-all SSH) is optional.
-
-Manual equivalent:
-```bash
-ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
-for h in master worker1 worker2; do ssh-copy-id $h; done
-for h in master worker1 worker2; do ssh -o BatchMode=yes $h hostname; done
-```
-
-### Step 6 — Prepare each node (every laptop)
-```bash
-./scripts/03_prepare_node.sh            # auto-detects Hadoop/Spark
-# or: ./scripts/03_prepare_node.sh /path/to/hadoop-3.x.y /path/to/spark-3.5.x-bin-hadoop3
-source ~/.bashrc
-```
-This script:
-- makes `/opt/hadoop` and `/opt/spark` symlinks to the real install dirs. `start-dfs.sh` and `start-workers.sh` run the *master's* paths on the workers, so the paths must be identical everywhere;
-- creates `/bigdata/...` (HDFS blocks, YARN, Spark spill, logs, staging, evidence);
-- adds the environment variables to `~/.bashrc`.
-
-### Step 7 — Install configs on all nodes (master)
-```bash
-./scripts/04_install_configs.sh
-```
-This script:
-- copies `conf/hadoop/*` → `$HADOOP_HOME/etc/hadoop/` and `conf/spark/*` → `$SPARK_HOME/conf/` on all 3 nodes (backing up the old files to `~/conf-backup-*.tgz`);
-- appends the `JAVA_HOME`/log/pid block to `hadoop-env.sh`;
-- copies the Iceberg jar into `$SPARK_HOME/jars` everywhere, which also works offline;
-- **fails** if a node runs a different Hadoop or Spark version.
-
-It ends by printing `dfs.replication = 3` and `dfs.blocksize = 134217728`. Re-run it after any config edit, then restart the cluster.
-
-Key settings (full comments are in the files):
-
-| File | Setting | Value |
-|---|---|---|
-| core-site.xml | `fs.defaultFS` | `hdfs://master:9000` |
-| hdfs-site.xml | `dfs.replication` / `dfs.blocksize` | `3` / `134217728` |
-| hdfs-site.xml | `dfs.namenode.rpc-bind-host` | `0.0.0.0` |
-| hdfs-site.xml | `dfs.client.block.write.replace-datanode-on-failure.policy` | `NEVER` (Hadoop's advice for ≤ 3 nodes) |
-| hdfs-site.xml | `dfs.permissions.enabled` | `false` (different user names per laptop) |
-| yarn-site.xml | `yarn.resourcemanager.hostname` | `master` |
-| spark-defaults.conf | `spark.master` | `spark://master:7077` |
-| spark-defaults.conf | `spark.sql.catalog.lake` (+ `.type`, `.warehouse`) | Iceberg `SparkCatalog`, `hadoop`, `hdfs://master:9000/warehouse/iceberg` |
-| spark-defaults.conf | `spark.sql.files.maxPartitionBytes` | `134217728` (1 read task per HDFS block) |
-| spark-defaults.conf | `spark.eventLog.dir` | `hdfs://master:9000/spark-logs` (job history = experiment evidence) |
-
-### Step 8 — Format the NameNode (master, ONCE)
-```bash
-./scripts/05_format_namenode.sh
-# raw: hdfs namenode -format -nonInteractive -clusterId CID-ecommerce-lakehouse
-```
-The script refuses to run a second time. `--force` wipes HDFS on all 3 nodes and re-formats. Never re-format only the NameNode: the DataNodes would then fail with *Incompatible clusterIDs*.
-
-### Step 9 — Start the cluster (master)
-```bash
-./scripts/06_start_cluster.sh
-```
-Raw equivalent:
-```bash
-start-dfs.sh && hdfs dfsadmin -safemode wait
-start-yarn.sh
-$SPARK_HOME/sbin/start-master.sh
-$SPARK_HOME/sbin/start-workers.sh
-$SPARK_HOME/sbin/start-history-server.sh
-```
-Expected `cluster_status.sh` output:
-```
---- master    DataNode, HistoryServer, Master, NameNode, NodeManager, ResourceManager, SecondaryNameNode, Worker
---- worker1   DataNode, NodeManager, Worker
---- worker2   DataNode, NodeManager, Worker
-[ OK ] HDFS: 3/3 DataNodes live
-[ OK ] YARN: 3/3 NodeManagers running
-[ OK ] Spark: 3/3 workers ALIVE, 12 cores total
-```
-To stop everything: `./scripts/stop_cluster.sh`. Both scripts are safe to re-run, for example after a laptop slept.
-
-### Step 10 — Move `archive (7).zip` from Windows to master
-Pick one option:
-
-**A. Windows PC on the same network** (PowerShell; OpenSSH client is built into Windows 10/11):
-```powershell
-scp "C:\Users\user\Downloads\archive (7).zip" <MASTER_USER>@<MASTER_IP>:/bigdata/staging/ecommerce-archive.zip
-```
-**B. Dual-boot (Windows partition on the master laptop).** Click the Windows drive in Ubuntu *Files* to mount it, then:
-```bash
-cp "/media/$USER/<WINDOWS_DRIVE>/Users/user/Downloads/archive (7).zip" /bigdata/staging/ecommerce-archive.zip
-```
-**C. USB stick.** It must be **exFAT or NTFS**, because FAT32 cannot hold files of 4 GB or more.
-```bash
-cp "/media/$USER/<USB>/archive (7).zip" /bigdata/staging/ecommerce-archive.zip
-```
-Renaming the file to `ecommerce-archive.zip` removes the spaces and parentheses that break shell commands.
-
-### Step 11 — Unzip and build the manifest (master)
-```bash
-./scripts/07_stage_dataset.sh /bigdata/staging/ecommerce-archive.zip
-```
-This unzips to `/bigdata/staging/ecommerce/` and checks the 9-column header. It then writes `manifest.csv` with exact byte sizes and row counts (≈ 42.4 M rows in October, 67,501,979 in November, ≈ 110 M in total). Every later phase checks its counts against this manifest.
-
-Streaming alternative that skips the 14.7 GB local unzip:
-```bash
-unzip -p /bigdata/staging/ecommerce-archive.zip 2019-Oct.csv | \
-  hdfs dfs -D dfs.replication=3 -D dfs.blocksize=134217728 -put - /data/raw/ecommerce/2019-Oct.csv
-```
-With this route you lose the local row-count manifest, so the scripted path is recommended.
-
-### Step 12 — Ingest into HDFS (master)
-```bash
-./scripts/08_ingest_hdfs.sh
-```
-Raw equivalent:
-```bash
-hdfs dfs -mkdir -p /data/raw/ecommerce
-hdfs dfs -D dfs.replication=3 -D dfs.blocksize=134217728 -put /bigdata/staging/ecommerce/2019-Oct.csv /data/raw/ecommerce/
-hdfs dfs -D dfs.replication=3 -D dfs.blocksize=134217728 -put /bigdata/staging/ecommerce/2019-Nov.csv /data/raw/ecommerce/
-hdfs dfs -setrep -w 3 /data/raw/ecommerce
-```
-The script also:
-- skips files that are already uploaded;
-- logs seconds and MB/s per file to `/bigdata/evidence/phase1/ingest_log.csv` (ingestion throughput for the report);
-- copies the manifest and log to `hdfs:///data/meta/ingest/`.
-
-Expect roughly 10–25 min on Wi-Fi and 3–6 min on gigabit Ethernet.
-
-### Step 13 — Verify distribution and replication (master)
-```bash
-./scripts/09_verify_hdfs.sh
-```
-Raw equivalent:
-```bash
-hdfs dfsadmin -report
-hdfs fsck /data/raw/ecommerce/ -files -blocks -locations
-hdfs dfs -stat "%n replication=%r blocksize=%o bytes=%b" "/data/raw/ecommerce/*.csv"
-```
-Checks performed, each reported as PASS or FAIL:
-
-| Check | Expected |
+| Problem | Do this |
 |---|---|
-| Live DataNodes | 3 |
-| `dfs.replication` / `dfs.blocksize` | 3 / 134217728 |
-| Per file: replication, block size, bytes = manifest | 3, 128 MB, equal |
-| Blocks per file = ⌈size / 128 MB⌉ | ≈ 43 (Oct), ≈ 68 (Nov), ≈ 111 total |
-| fsck status / average replication / under-replicated / missing | HEALTHY / 3.0 / 0 / 0 |
-| Replicas per DataNode | each node holds all ≈ 111 blocks (≈ 333 replicas in total) |
-
-The full outputs are saved for the report in `/bigdata/evidence/phase1/hdfs_verify_<timestamp>/`.
-
-A line of `fsck` output looks like this (each block lists the 3 laptops holding it):
-```
-/data/raw/ecommerce/2019-Nov.csv 9006762395 bytes, replicated: replication=3, 68 block(s):  OK
-0. BP-...:blk_1073741825_1001 len=134217728 Live_repl=3  [DatanodeInfoWithStorage[192.168.1.10:9866,...], DatanodeInfoWithStorage[192.168.1.11:9866,...], DatanodeInfoWithStorage[192.168.1.12:9866,...]]
-```
-
-### Step 14 — Spark + Iceberg acceptance test (master)
-```bash
-./scripts/10_run_smoke_test.sh            # add --yarn to also run MapReduce "pi" on YARN
-```
-`jobs/phase1_smoke_test.py` checks that:
-- tasks ran on `master`, `worker1` and `worker2`;
-- the number of input partitions ≈ the number of HDFS blocks;
-- Spark's row count per file equals the manifest (one distributed full scan, which also prints the `event_type` distribution and the scan time);
-- the Iceberg catalog `lake` creates namespaces **`lake.bronze`, `lake.silver`, `lake.gold`**;
-- a throw-away table supports INSERT, snapshots and `VERSION AS OF` time travel, with its data files under `hdfs://master:9000/warehouse/iceberg/`.
-
-The results are written to `/bigdata/evidence/phase1/smoke_test_<timestamp>.json`. When it prints `ALL CHECKS PASSED`, Phase 1 is complete.
+| A worker shows as dead | `ping` it; wake the laptop; on master `./scripts/06_start_cluster.sh` (already-running daemons are skipped). HDFS still serves all data from the other replicas — say so, it is the point of replication 3 |
+| `09_demo.sh` hangs at start | Spark waits for executors: check `:8080`; if needed run it again; fallback = the saved output in `evidence/phase2/logs/03_*.log` |
+| Browser cannot open `:9870` | use the IP, not `master`; check Windows firewall settings from Phase 1 |
+| No time left | skip to the charts; every number is also in `results/*.json` |
 
 ---
 
-## 4. Troubleshooting
+## 5. Key results (full data)
 
-| Symptom | Cause → fix |
+| Area | Result |
 |---|---|
-| `Live datanodes (1)`; worker logs show `Retrying connect to server: master/…:9000` | Firewall, or the NameNode bound to loopback. On master, `ss -ltnp \| grep 9000` must show `0.0.0.0:9000`. Re-run `01` (127.0.1.1 line) and `04`. |
-| DataNode log: `Incompatible clusterIDs` | The NameNode was re-formatted. Run `05_format_namenode.sh --force`, or delete `/bigdata/hadoop/hdfs/datanode/*` on that node and restart. |
-| `ERROR: JAVA_HOME is not set` from start-dfs.sh | The `hadoop-env.sh` block is missing → re-run `04`. |
-| `Permission denied (publickey)` while starting | Re-run `02`; check user names in `~/.ssh/config`. |
-| `ping worker1` fails | Wi-Fi client isolation → use a hotspot or router; or a wrong IP in `cluster.env`. |
-| Spark: `Initial job has not accepted any resources` | No worker has enough free memory/cores for one executor (check http://master:8080), or a firewall blocks Spark's random ports. |
-| `Python in worker has different version` | Install the same Python 3 minor version on all nodes; `PYSPARK_PYTHON=/usr/bin/python3`. |
-| `ClassNotFoundException: ...IcebergSparkSessionExtensions` or `NoSuchMethodError` | Iceberg jar missing or built for another Spark/Scala version → step 3 table, re-run `04`. |
-| `Name node is in safe mode` | Wait (`hdfs dfsadmin -safemode wait`). Only if all 3 DataNodes are live and it persists: `hdfs dfsadmin -safemode leave`. |
-| YARN NodeManager `UNHEALTHY` | Disk above 95% → delete the staging CSVs, `hdfs dfs -expunge`. |
-| A laptop slept or rebooted | Re-run `./scripts/06_start_cluster.sh` (idempotent). If its IP changed, see §2. |
-| Daemon logs | `/bigdata/hadoop/logs/` (HDFS/YARN), `/bigdata/spark/logs/` (Spark) on each node. |
+| Ingestion | 14.7 GB → HDFS in 27 min over Wi-Fi (≈ 8.5 MB/s × 3 replicas), 111 blocks × 3, HEALTHY |
+| Bronze / Silver | 109,950,743 → 256,773 invalid, 130,635 duplicates → 109,563,335 rows; 23.0 M sessions |
+| Iceberg | time travel + rollback, metadata-only schema evolution (66 files unchanged), MERGE INTO verified (0 mismatches) |
+| Funnel | view → cart 10.1 %, cart → purchase 60.6 %, view → purchase 6.1 % of sessions; electronics 75.6 % of revenue |
+| RFM | Champions = 6.6 % of buyers, 31.5 % of revenue; 86.9 % of users never buy |
+| LogReg | ROC-AUC 0.720, PR-AUC 0.664 (baseline 0.431), accuracy 0.664, F1 0.623 |
+| ALS | Precision@10 0.047 vs 0.020 popularity (2.3×), Recall@10 0.155 vs 0.067 |
+| Scalability (2 weeks, 26.3 M events) | median T₁ 94.1 s → T₂ 40.6 s (S = 2.32) → T₄ 65.8 s (S = 1.43) → T₈ 68.2 s (S = 1.38); beyond 2 cores the shuffle crosses Wi-Fi (chart 11) |
+| Storage | Iceberg vs raw CSV, identical results: one-day query 2.7 s vs 42.6 s (15.8×), full scan of 2 columns 7.8 s vs 41.8 s (5.4×) |
 
----
+## 6. Limitations
 
-## 5. Where distributed computing is used in Phase 1 (for the report)
-
-- **Storage (HDFS).** Each CSV is cut into 128 MB blocks (≈ 111 in total), and each block is replicated on all 3 DataNodes. The NameNode keeps only metadata (block → DataNode map); the bytes live on the three laptops.
-- **Ingestion.** `hdfs dfs -put` streams each block through a replication pipeline (master → worker1 → worker2), so replicas are written in parallel with the upload.
-- **Compute (Spark Standalone).** 3 workers × 4 cores = 12 executor cores. Reading `/data/raw/ecommerce/*.csv` creates about one task per block, and tasks are scheduled on a node that holds the block (data locality). The smoke test's `groupBy` is a distributed shuffle across the laptops.
-- **Table format (Iceberg on HDFS).** The catalog metadata and Parquet data files are HDFS files, so they are replicated ×3 as well. Snapshots and time travel come from Iceberg's metadata layer, without copying data.
-
----
-
-## 6. Evidence produced (keep for the final report)
-
-```
-/bigdata/evidence/phase1/
-├── ingest_log.csv                            # upload seconds + MB/s per file
-├── hdfs_verify_<ts>/dfsadmin_report.txt      # capacity and usage per DataNode
-├── hdfs_verify_<ts>/fsck_files_blocks_locations.txt
-├── hdfs_verify_<ts>/replicas_per_datanode.txt
-├── hdfs_verify_<ts>/stat.txt, manifest.csv
-└── smoke_test_<ts>.json                      # hosts, partitions, row counts, Iceberg checks
-```
-Screenshots worth taking for the slides: NameNode UI → *Datanodes* tab (3 live), *Utilities → Browse* → a file's block info showing 3 locations, Spark Master UI with 3 workers, and the smoke-test job in the History Server.
+* Wi-Fi (~10 MB/s) is the bottleneck for every shuffle and for HDFS replication; a wired switch would change the speed-up curve.
+* 8–9 GB laptops: executors of 1.4 GB (700 MB in the benchmark); ALS trained on 20 % of users and evaluated on a 20,000-user sample (`recommendForAllUsers` for all 585 k users did not finish in 2.5 h).
+* Source data has no purchase events on 2019-11-15 (views and carts present); excluded from the ML labels, visible in chart 09.
+* Session conversion uses the dataset's `user_session` id; times are UTC.

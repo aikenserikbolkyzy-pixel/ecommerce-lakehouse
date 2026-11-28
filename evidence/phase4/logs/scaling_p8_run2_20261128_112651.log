@@ -1,0 +1,90 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 11:27:01 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 11:27:06 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 11:27:06 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 11:27:06 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 11:27:06 INFO ResourceUtils: ==============================================================
+26/11/28 11:27:06 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 11:27:06 INFO ResourceUtils: ==============================================================
+26/11/28 11:27:06 INFO SparkContext: Submitted application: phase4-bench-scaling-p8-run2
+26/11/28 11:27:06 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 11:27:06 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 11:27:06 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 11:27:06 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 11:27:06 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 11:27:07 INFO Utils: Successfully started service 'sparkDriver' on port 45597.
+26/11/28 11:27:07 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 11:27:07 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 11:27:07 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 11:27:07 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 11:27:07 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 11:27:07 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-e6b853a0-e6a5-463a-b11f-8c86ba29b8ea
+26/11/28 11:27:07 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 11:27:07 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 11:27:08 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 11:27:08 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:45597/files/common.py with timestamp 1795847226084
+26/11/28 11:27:08 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-98536e6b-56c0-4093-8d9f-a0b2f7bc6876/userFiles-b1fefe12-e3f7-4836-bcfc-70695fa2f5a3/common.py
+26/11/28 11:27:08 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 700, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 11:27:08 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+26/11/28 11:27:08 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 11:27:08 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 11:27:08 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 11:27:08 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 11:27:08 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 11:27:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 11:27:08 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 11:27:09 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 112 ms (0 ms spent in bootstraps)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128112709-0029
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/0 on hostPort 192.168.100.47:46663 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/1 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/1 on hostPort 192.168.100.47:46663 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/2 on hostPort 192.168.100.15:45729 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/3 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/3 on hostPort 192.168.100.15:45729 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/4 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/4 on hostPort 192.168.100.15:45729 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/5 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/5 on hostPort 192.168.100.67:37017 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/6 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/6 on hostPort 192.168.100.67:37017 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128112709-0029/7 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 1 core(s)
+26/11/28 11:27:09 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128112709-0029/7 on hostPort 192.168.100.67:37017 with 1 core(s), 700.0 MiB RAM
+26/11/28 11:27:09 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46659.
+26/11/28 11:27:09 INFO NettyBlockTransferService: Server created on master:46659
+26/11/28 11:27:09 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/5 is now RUNNING
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/7 is now RUNNING
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/6 is now RUNNING
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/3 is now RUNNING
+26/11/28 11:27:09 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 46659, None)
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/4 is now RUNNING
+26/11/28 11:27:09 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/2 is now RUNNING
+26/11/28 11:27:09 INFO BlockManagerMasterEndpoint: Registering block manager master:46659 with 434.4 MiB RAM, BlockManagerId(driver, master, 46659, None)
+26/11/28 11:27:09 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 46659, None)
+26/11/28 11:27:10 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 46659, None)
+26/11/28 11:27:10 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/1 is now RUNNING
+26/11/28 11:27:10 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128112709-0029/0 is now RUNNING
+26/11/28 11:27:13 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:49482) with ID 6, ResourceProfileId 0
+26/11/28 11:27:13 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:49488) with ID 7, ResourceProfileId 0
+26/11/28 11:27:13 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:49492) with ID 5, ResourceProfileId 0
+26/11/28 11:27:13 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:41115 with 240.0 MiB RAM, BlockManagerId(6, 192.168.100.67, 41115, None)
+26/11/28 11:27:13 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:38169 with 240.0 MiB RAM, BlockManagerId(7, 192.168.100.67, 38169, None)
+26/11/28 11:27:13 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:34905 with 240.0 MiB RAM, BlockManagerId(5, 192.168.100.67, 34905, None)
+26/11/28 11:27:13 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:44880) with ID 3, ResourceProfileId 0
+26/11/28 11:27:13 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:44906) with ID 4, ResourceProfileId 0
+26/11/28 11:27:13 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:44894) with ID 2, ResourceProfileId 0
+26/11/28 11:27:14 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46073 with 240.0 MiB RAM, BlockManagerId(4, 192.168.100.15, 46073, None)
+26/11/28 11:27:14 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46119 with 240.0 MiB RAM, BlockManagerId(3, 192.168.100.15, 46119, None)
+26/11/28 11:27:14 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:44741 with 240.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 44741, None)
+26/11/28 11:27:16 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128112709-0029/events_1_app-20261128112709-0029.zstd
+26/11/28 11:27:19 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 11:27:34 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:47042) with ID 1, ResourceProfileId 0
+26/11/28 11:27:35 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:47048) with ID 0, ResourceProfileId 0
+26/11/28 11:27:35 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:46319 with 240.0 MiB RAM, BlockManagerId(1, 192.168.100.47, 46319, None)
+26/11/28 11:27:35 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:44705 with 240.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 44705, None)
+[06:27:41] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce | warehouse=hdfs://master:9000/warehouse/iceberg
+[06:27:42]   p=8 run=2: 8 executors on {'192.168.100.67': 3, '192.168.100.15': 3, '192.168.100.47': 2}, shuffle.partitions=32
+RESULT scaling p=8 run=2 seconds=66.334 (sessions 58.843s, categories 7.491s) events=26,304,679 sessions=5,727,520 executors=8 

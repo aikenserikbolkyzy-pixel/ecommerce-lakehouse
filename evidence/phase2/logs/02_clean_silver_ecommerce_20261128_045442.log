@@ -1,0 +1,116 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 04:54:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 04:55:00 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 04:55:00 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 04:55:00 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 04:55:00 INFO ResourceUtils: ==============================================================
+26/11/28 04:55:00 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 04:55:00 INFO ResourceUtils: ==============================================================
+26/11/28 04:55:00 INFO SparkContext: Submitted application: phase2-02-clean-silver
+26/11/28 04:55:00 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 04:55:00 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 04:55:00 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 04:55:00 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 04:55:00 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 04:55:02 INFO Utils: Successfully started service 'sparkDriver' on port 45739.
+26/11/28 04:55:02 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 04:55:02 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 04:55:02 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 04:55:02 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 04:55:02 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 04:55:02 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-f0994567-0e40-4362-911f-31f1bd2be9ca
+26/11/28 04:55:02 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 04:55:03 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 04:55:03 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 04:55:04 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:45739/files/common.py with timestamp 1795823700350
+26/11/28 04:55:04 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-550dac2d-466e-430f-b001-cfe3d1ebcd7d/userFiles-941e9f28-d9ce-414e-a01f-14f29a289ba4/common.py
+26/11/28 04:55:04 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 04:55:04 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 04:55:04 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 04:55:04 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 04:55:04 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 04:55:04 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 04:55:04 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 04:55:04 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 04:55:05 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 04:55:05 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 165 ms (0 ms spent in bootstraps)
+26/11/28 04:55:06 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128045506-0006
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128045506-0006/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 04:55:06 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128045506-0006/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128045506-0006/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 04:55:06 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128045506-0006/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128045506-0006/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 04:55:06 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128045506-0006/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128045506-0006/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 04:55:06 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128045506-0006/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128045506-0006/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 04:55:06 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128045506-0006/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:55:06 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 44761.
+26/11/28 04:55:06 INFO NettyBlockTransferService: Server created on master:44761
+26/11/28 04:55:06 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128045506-0006/4 is now RUNNING
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128045506-0006/3 is now RUNNING
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128045506-0006/0 is now RUNNING
+26/11/28 04:55:06 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 44761, None)
+26/11/28 04:55:06 INFO BlockManagerMasterEndpoint: Registering block manager master:44761 with 434.4 MiB RAM, BlockManagerId(driver, master, 44761, None)
+26/11/28 04:55:06 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 44761, None)
+26/11/28 04:55:06 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 44761, None)
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128045506-0006/1 is now RUNNING
+26/11/28 04:55:06 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128045506-0006/2 is now RUNNING
+26/11/28 04:55:09 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:34966) with ID 4, ResourceProfileId 0
+26/11/28 04:55:09 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:34970) with ID 3, ResourceProfileId 0
+26/11/28 04:55:09 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:39699 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 39699, None)
+26/11/28 04:55:09 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:40261 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 40261, None)
+26/11/28 04:55:11 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128045506-0006/events_1_app-20261128045506-0006.zstd
+26/11/28 04:55:13 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 04:55:20 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:46966) with ID 2, ResourceProfileId 0
+26/11/28 04:55:20 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:46956) with ID 1, ResourceProfileId 0
+26/11/28 04:55:21 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:44707 with 660.0 MiB RAM, BlockManagerId(1, 192.168.100.15, 44707, None)
+26/11/28 04:55:21 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46099 with 660.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 46099, None)
+26/11/28 04:55:21 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:44640) with ID 0, ResourceProfileId 0
+26/11/28 04:55:22 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:44783 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 44783, None)
+[23:55:29] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  SILVER  local.ecommerce.bronze_events  ->  local.ecommerce.silver_events
+==============================================================================
+[23:55:30] > data-quality profile of bronze (1 pass)
+[23:56:00]   data-quality profile of bronze (1 pass): 30.4s
+    bronze_rows               109,950,743
+    null_event_time                     0
+    null_price                          0
+    price_le_0                    256,761
+    null_user_id                        0
+    null_user_session                  12
+    bad_event_type                      0
+    null_brand                 15,331,243
+    null_category_code         35,413,780
+    invalid_rows                  256,773
+[23:56:06]   physical plan: 0 shuffle(s) before the write -> /bigdata/evidence/phase2/02_silver_plan_ecommerce.txt
+[23:56:06] > filter + dedup + clean + sessionize + write silver
+[00:13:15]   filter + dedup + clean + sessionize + write silver: 1029.4s
+[00:13:15]   bronze 109,950,743 -> invalid 256,773 -> valid 109,693,970 -> duplicates 130,635 -> silver 109,563,335
+[00:13:15] > session statistics
+    sessions                      22996616.0
+    sessions_with_purchase        1402758.0
+    sessions_ending_in_purchase   689565.0
+    avg_events_per_session        4.76
+    avg_session_duration_sec      1100.1
+    median_session_duration_sec   61.0
+    session_conversion_rate       0.061
+  sample session:
++---------+-------------------+----------+-------------+-------+------+--------------------+--------------------+--------------------+---------------------------+
+|event_seq|event_time         |event_type|main_category|brand  |price |sec_since_prev_event|session_duration_sec|session_has_purchase|session_ended_with_purchase|
++---------+-------------------+----------+-------------+-------+------+--------------------+--------------------+--------------------+---------------------------+
+|1        |2019-11-14 08:04:28|view      |furniture    |bts    |158.02|NULL                |315                 |true                |true                       |
+|2        |2019-11-14 08:05:02|view      |furniture    |bts    |158.02|34                  |315                 |true                |true                       |
+|3        |2019-11-14 08:05:25|view      |unknown      |unknown|100.39|23                  |315                 |true                |true                       |
+|4        |2019-11-14 08:05:41|view      |unknown      |unknown|100.39|16                  |315                 |true                |true                       |
+|5        |2019-11-14 08:06:21|view      |unknown      |unknown|100.39|40                  |315                 |true                |true                       |
+|6        |2019-11-14 08:06:31|cart      |unknown      |unknown|100.39|10                  |315                 |true                |true                       |
+|7        |2019-11-14 08:09:43|purchase  |unknown      |unknown|100.39|192                 |315                 |true                |true                       |
++---------+-------------------+----------+-------------+-------+------+--------------------+--------------------+--------------------+---------------------------+
+
+[00:13:59]   session statistics: 43.5s
+[00:13:59] Evidence written to /bigdata/evidence/phase2/02_clean_silver_ecommerce_20261128_001359.json  (total 1110.3s)

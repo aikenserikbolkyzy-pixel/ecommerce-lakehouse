@@ -1,0 +1,578 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 04:45:11 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 04:45:15 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 04:45:15 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 04:45:15 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 04:45:15 INFO ResourceUtils: ==============================================================
+26/11/28 04:45:15 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 04:45:15 INFO ResourceUtils: ==============================================================
+26/11/28 04:45:15 INFO SparkContext: Submitted application: phase2-03-iceberg-features
+26/11/28 04:45:16 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 04:45:16 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 04:45:16 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 04:45:16 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 04:45:16 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 04:45:17 INFO Utils: Successfully started service 'sparkDriver' on port 45987.
+26/11/28 04:45:17 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 04:45:17 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 04:45:17 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 04:45:17 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 04:45:17 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 04:45:17 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-47f0381e-13f8-46da-bb4d-82f66c8d32e8
+26/11/28 04:45:17 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 04:45:18 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 04:45:18 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 04:45:18 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:45987/files/common.py with timestamp 1795823115821
+26/11/28 04:45:18 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-4a510083-6d87-45d3-856d-ee0ce232a4a7/userFiles-c3d608e0-f15e-48ac-9b95-912e2b2fe2bb/common.py
+26/11/28 04:45:18 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 04:45:18 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 04:45:18 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 04:45:18 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 04:45:18 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 04:45:18 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 04:45:18 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 04:45:18 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 04:45:19 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 04:45:20 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 151 ms (0 ms spent in bootstraps)
+26/11/28 04:45:21 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128044521-0004
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128044521-0004/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 04:45:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128044521-0004/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128044521-0004/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 04:45:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128044521-0004/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128044521-0004/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 04:45:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128044521-0004/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128044521-0004/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 04:45:21 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45349.
+26/11/28 04:45:21 INFO NettyBlockTransferService: Server created on master:45349
+26/11/28 04:45:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128044521-0004/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128044521-0004/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 04:45:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128044521-0004/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:45:21 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128044521-0004/3 is now RUNNING
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128044521-0004/4 is now RUNNING
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128044521-0004/1 is now RUNNING
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128044521-0004/2 is now RUNNING
+26/11/28 04:45:21 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128044521-0004/0 is now RUNNING
+26/11/28 04:45:21 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 45349, None)
+26/11/28 04:45:21 INFO BlockManagerMasterEndpoint: Registering block manager master:45349 with 434.4 MiB RAM, BlockManagerId(driver, master, 45349, None)
+26/11/28 04:45:21 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 45349, None)
+26/11/28 04:45:21 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 45349, None)
+26/11/28 04:45:23 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:55824) with ID 4, ResourceProfileId 0
+26/11/28 04:45:24 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:55826) with ID 3, ResourceProfileId 0
+26/11/28 04:45:24 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:32921 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 32921, None)
+26/11/28 04:45:24 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:45517 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 45517, None)
+26/11/28 04:45:25 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:48364) with ID 1, ResourceProfileId 0
+26/11/28 04:45:25 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:48368) with ID 2, ResourceProfileId 0
+26/11/28 04:45:25 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46191 with 660.0 MiB RAM, BlockManagerId(1, 192.168.100.15, 46191, None)
+26/11/28 04:45:25 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:45763 with 660.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 45763, None)
+26/11/28 04:45:26 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128044521-0004/events_1_app-20261128044521-0004.zstd
+26/11/28 04:45:28 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 04:45:37 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:44804) with ID 0, ResourceProfileId 0
+26/11/28 04:45:38 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:45741 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 45741, None)
+[23:45:44] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce_dev | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  A. SNAPSHOTS, TIME TRAVEL, ROW-LEVEL DELETE, ROLLBACK
+==============================================================================
++-------------------+-------------------+---------+-------------+-------------+
+|snapshot_id        |committed_utc      |operation|added_records|total_records|
++-------------------+-------------------+---------+-------------+-------------+
+|3359075505574004976|2026-11-27 23:32:36|append   |1096693      |1096693      |
+|894175008866079114 |2026-11-27 23:38:25|delete   |NULL         |1096693      |
+|3059184486396300169|2026-11-27 23:44:41|append   |1096693      |1096693      |
++-------------------+-------------------+---------+-------------+-------------+
+
+[23:46:01]   current snapshot s0 = 3059184486396300169 committed 2026-11-27 23:44:41.886 UTC
+[23:46:11]   customer 512370503: 1 events, table total 1,096,693
+[23:46:11] > A1 DELETE one customer (merge-on-read)
+[23:46:16]   A1 DELETE one customer (merge-on-read): 4.8s
+[23:46:18]   new snapshot s1 = 2933915297926065567 (delete), delete files total = 1
++----------------+-----+-------+
+|file_type       |files|records|
++----------------+-----+-------+
+|data            |61   |1096693|
+|position deletes|1    |1      |
++----------------+-----+-------+
+
+[23:46:20] > A2 time travel queries
+[23:46:28]   A2 time travel queries: 7.5s
+[23:46:28]   customer rows: current=0  VERSION AS OF s0=1  TIMESTAMP AS OF '2026-11-27 23:44:41.886'=1
+[23:46:28]   table rows:    current=1,096,692  before=1,096,693  (diff 1)
+[23:46:28] > A3 rollback_to_snapshot
+26/11/28 04:46:28 WARN Spark3Util: Failed to load catalog: ecommerce_dev
+org.apache.spark.sql.connector.catalog.CatalogNotFoundException: [CATALOG_NOT_FOUND] The catalog `ecommerce_dev` not found. Consider to set the SQL config "spark.sql.catalog.ecommerce_dev" to a catalog plugin. SQLSTATE: 42P08
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.catalogNotFoundError(QueryExecutionErrors.scala:1869)
+	at org.apache.spark.sql.connector.catalog.Catalogs$.load(Catalogs.scala:57)
+	at org.apache.spark.sql.connector.catalog.CatalogManager.$anonfun$catalog$1(CatalogManager.scala:56)
+	at scala.collection.mutable.HashMap.getOrElseUpdate(HashMap.scala:469)
+	at org.apache.spark.sql.connector.catalog.CatalogManager.catalog(CatalogManager.scala:56)
+	at org.apache.iceberg.spark.Spark3Util.lambda$catalogAndIdentifier$4(Spark3Util.java:836)
+	at org.apache.iceberg.spark.SparkUtil.catalogAndIdentifier(SparkUtil.java:122)
+	at org.apache.iceberg.spark.Spark3Util.catalogAndIdentifier(Spark3Util.java:832)
+	at org.apache.iceberg.spark.Spark3Util.catalogAndIdentifier(Spark3Util.java:787)
+	at org.apache.iceberg.spark.Spark3Util.catalogAndIdentifier(Spark3Util.java:799)
+	at org.apache.iceberg.spark.procedures.ProcedureInput.catalogAndIdent(ProcedureInput.java:243)
+	at org.apache.iceberg.spark.procedures.ProcedureInput.ident(ProcedureInput.java:215)
+	at org.apache.iceberg.spark.procedures.RollbackToSnapshotProcedure.call(RollbackToSnapshotProcedure.java:88)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures.org$apache$spark$sql$catalyst$analysis$InvokeProcedures$$invoke(InvokeProcedures.scala:48)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures$$anonfun$apply$1.applyOrElse(InvokeProcedures.scala:40)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures$$anonfun$apply$1.applyOrElse(InvokeProcedures.scala:36)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$2(AnalysisHelper.scala:200)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$1(AnalysisHelper.scala:200)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:416)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning(AnalysisHelper.scala:198)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning$(AnalysisHelper.scala:194)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning(AnalysisHelper.scala:100)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning$(AnalysisHelper.scala:97)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators(AnalysisHelper.scala:77)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators$(AnalysisHelper.scala:76)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperators(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures.apply(InvokeProcedures.scala:36)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures.apply(InvokeProcedures.scala:34)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:248)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:245)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:237)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:237)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:343)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:224)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:289)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.resolveInFixedPoint(HybridAnalyzer.scala:236)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.$anonfun$apply$1(HybridAnalyzer.scala:91)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.withTrackedAnalyzerBridgeState(HybridAnalyzer.scala:122)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.apply(HybridAnalyzer.scala:84)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:322)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:423)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:322)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$2(QueryExecution.scala:139)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$1(QueryExecution.scala:139)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:150)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:90)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$5(Dataset.scala:138)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:135)
+	at org.apache.spark.sql.classic.SparkSession.$anonfun$sql$1(SparkSession.scala:535)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:502)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:540)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:92)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+[23:46:29]   A3 rollback_to_snapshot: 0.5s
+[23:46:30]   after rollback: customer rows = 1 (expected 1)
++-------------------+-------------------+-------------------+-------------------+
+|made_current_utc   |snapshot_id        |parent_id          |is_current_ancestor|
++-------------------+-------------------+-------------------+-------------------+
+|2026-11-27 23:32:36|3359075505574004976|NULL               |false              |
+|2026-11-27 23:38:25|894175008866079114 |3359075505574004976|false              |
+|2026-11-27 23:40:46|3359075505574004976|NULL               |false              |
+|2026-11-27 23:44:41|3059184486396300169|NULL               |true               |
+|2026-11-27 23:46:15|2933915297926065567|3059184486396300169|false              |
+|2026-11-27 23:46:28|3059184486396300169|NULL               |true               |
++-------------------+-------------------+-------------------+-------------------+
+
+
+==============================================================================
+  B. SCHEMA EVOLUTION (metadata-only ADD COLUMN)
+==============================================================================
+[23:46:33] > B1 ALTER TABLE ADD COLUMN
+[23:46:34]   B1 ALTER TABLE ADD COLUMN: 0.4s
++------------------+---------+---------------------------------------------------------------------------+
+|col_name          |data_type|comment                                                                    |
++------------------+---------+---------------------------------------------------------------------------+
+|brand             |string   |NULL                                                                       |
+|price             |double   |NULL                                                                       |
+|is_high_value_item|boolean  |Flag for expensive items; added by schema evolution, NULL for existing rows|
++------------------+---------+---------------------------------------------------------------------------+
+
++-------------------+-------+------+------------------+
+|event_time         |brand  |price |is_high_value_item|
++-------------------+-------+------+------------------+
+|2019-10-04 14:16:50|philips|720.71|NULL              |
+|2019-10-04 16:18:01|asus   |2207.9|NULL              |
+|2019-10-04 14:50:58|xiaomi |153.15|NULL              |
+|2019-10-04 05:13:03|sv     |386.08|NULL              |
+|2019-10-04 10:41:28|casper |102.19|NULL              |
++-------------------+-------+------+------------------+
+
++-------------------+-------------------+----------------+-------------------------------------------------------------------------------------------+
+|ts_utc             |latest_snapshot_id |latest_schema_id|file                                                                                       |
++-------------------+-------------------+----------------+-------------------------------------------------------------------------------------------+
+|2026-11-27 23:46:33|3059184486396300169|0               |hdfs://master:9000/warehouse/iceberg/ecommerce_dev/silver_events/metadata/v10.metadata.json|
+|2026-11-27 23:46:28|3059184486396300169|0               |hdfs://master:9000/warehouse/iceberg/ecommerce_dev/silver_events/metadata/v9.metadata.json |
+|2026-11-27 23:46:15|2933915297926065567|0               |hdfs://master:9000/warehouse/iceberg/ecommerce_dev/silver_events/metadata/v8.metadata.json |
++-------------------+-------------------+----------------+-------------------------------------------------------------------------------------------+
+
+[23:46:42]   [PASS] no data file rewritten (61 files before / 61 after), snapshot unchanged, new metadata version 9 -> 10
+
+==============================================================================
+  C. ACID UPSERT WITH MERGE INTO
+==============================================================================
+[23:46:42] > C1 initial load (until 2019-11-15 12:00)
+[23:46:55]   C1 initial load (until 2019-11-15 12:00): 12.6s
+[23:46:55]   initial snapshot 9150023615140099348: 640 rows
+[23:47:03]   incremental batch: 224 rows -> expect 14 UPDATE, 210 INSERT
+  2019-11-15 BEFORE merge (partial day):
++----------+-------------+-----+-----+---------+-------+----------+
+|event_date|main_category|views|carts|purchases|revenue|load_batch|
++----------+-------------+-----+-----+---------+-------+----------+
+|2019-11-15|electronics  |10258|1501 |0        |0.0    |initial   |
+|2019-11-15|unknown      |8998 |669  |0        |0.0    |initial   |
+|2019-11-15|appliances   |4684 |400  |0        |0.0    |initial   |
+|2019-11-15|computers    |2131 |123  |0        |0.0    |initial   |
+|2019-11-15|apparel      |1083 |44   |0        |0.0    |initial   |
++----------+-------------+-----+-----+---------+-------+----------+
+
+[23:47:05] > C2 MERGE INTO
+[23:47:07]   C2 MERGE INTO: 2.7s
+Traceback (most recent call last):
+  File "/home/aykkenn/ecommerce-lakehouse/jobs/phase2/03_iceberg_features_demo.py", line 289, in <module>
+    main()
+    ~~~~^^
+  File "/home/aykkenn/ecommerce-lakehouse/jobs/phase2/03_iceberg_features_demo.py", line 277, in main
+    demo_merge(spark, run)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "/home/aykkenn/ecommerce-lakehouse/jobs/phase2/03_iceberg_features_demo.py", line 224, in demo_merge
+    spark.sql(f"""
+    ~~~~~~~~~^^^^^
+        MERGE INTO {T} t
+        ^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        WHEN NOT MATCHED THEN INSERT *
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    """)
+    ^^^^
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 1816, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.9-src.zip/py4j/java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 263, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.9-src.zip/py4j/protocol.py", line 327, in get_return_value
+    raise Py4JJavaError(
+        "An error occurred while calling {0}{1}{2}.\n".
+        format(target_id, ".", name), value)
+py4j.protocol.Py4JJavaError: An error occurred while calling o61.sql.
+: org.apache.spark.SparkException: [INTERNAL_ERROR] The Spark SQL phase planning failed with an internal error. You hit a bug in Spark or the Spark plugins you use. Please, report this bug to the corresponding communities or vendors, and provide the full stack trace. SQLSTATE: XX000
+	at org.apache.spark.SparkException$.internalError(SparkException.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$.toInternalError(QueryExecution.scala:706)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:719)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+	at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:349)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:396)
+	at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:364)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:163)
+	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$eagerlyExecuteCommands$1(QueryExecution.scala:185)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$eagerlyExecute$1(QueryExecution.scala:184)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:201)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:194)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:360)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:356)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:467)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:194)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyCommandExecuted$1(QueryExecution.scala:155)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.getTryWithCallerStacktrace(Utils.scala:1453)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:160)
+	at org.apache.spark.sql.classic.Dataset.<init>(Dataset.scala:276)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$5(Dataset.scala:139)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:135)
+	at org.apache.spark.sql.classic.SparkSession.$anonfun$sql$1(SparkSession.scala:535)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:502)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:540)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:92)
+	at jdk.internal.reflect.GeneratedMethodAccessor69.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+	Suppressed: org.apache.spark.util.Utils$OriginalTryStackTraceException: Full stacktrace of original doTryWithCallerStacktrace caller
+		at org.apache.spark.SparkException$.internalError(SparkException.scala:107)
+		at org.apache.spark.sql.execution.QueryExecution$.toInternalError(QueryExecution.scala:706)
+		at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:719)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+		at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+		at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+		at scala.util.Try$.apply(Try.scala:217)
+		at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+		at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+		at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+		at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+		at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+		at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:349)
+		at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:396)
+		at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:364)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:163)
+		at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+		at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+		at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+		at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+		at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+		at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+		at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+		at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+		at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$eagerlyExecuteCommands$1(QueryExecution.scala:185)
+		at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+		at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$eagerlyExecute$1(QueryExecution.scala:184)
+		at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:201)
+		at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:194)
+		at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:491)
+		at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+		at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:491)
+		at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:37)
+		at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:360)
+		at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:356)
+		at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+		at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+		at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:467)
+		at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:194)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyCommandExecuted$1(QueryExecution.scala:155)
+		at scala.util.Try$.apply(Try.scala:217)
+		at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+		at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+		at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+		... 22 more
+Caused by: java.lang.AssertionError: assertion failed: No plan for TableReference[event_time#794, event_date#795, event_hour#796, event_type#797, product_id#798L, category_id#799L, category_code#800, main_category#801, brand#802, price#803, user_id#804L, user_session#805, event_seq#806, sec_since_prev_event#807L, session_start#808, session_end#809, session_duration_sec#810L, session_event_count#811L, session_purchase_count#812, session_has_purchase#813, session_ended_with_purchase#814, is_high_value_item#815] local.ecommerce_dev.silver_events
+
+	at scala.Predef$.assert(Predef.scala:279)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.execution.QueryExecution$.createSparkPlan(QueryExecution.scala:656)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.compileSubquery(InsertAdaptiveSparkPlan.scala:167)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$4(InsertAdaptiveSparkPlan.scala:152)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$4$adapted(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:263)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:630)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:628)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:936)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$3(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$3$adapted(InsertAdaptiveSparkPlan.scala:148)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$1(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$1$adapted(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:263)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.buildSubqueryMap(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.applyInternal(InsertAdaptiveSparkPlan.scala:76)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.apply(InsertAdaptiveSparkPlan.scala:49)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$applyInternal$1(InsertAdaptiveSparkPlan.scala:55)
+	at scala.collection.immutable.Vector1.map(Vector.scala:2141)
+	at scala.collection.immutable.Vector1.map(Vector.scala:386)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.applyInternal(InsertAdaptiveSparkPlan.scala:55)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.apply(InsertAdaptiveSparkPlan.scala:49)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.apply(InsertAdaptiveSparkPlan.scala:44)
+	at org.apache.spark.sql.execution.QueryExecution$.$anonfun$prepareForExecution$1(QueryExecution.scala:638)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.execution.QueryExecution$.prepareForExecution(QueryExecution.scala:637)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$2(QueryExecution.scala:285)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+	at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:349)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:396)
+	at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:364)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:163)
+	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$eagerlyExecuteCommands$1(QueryExecution.scala:185)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$eagerlyExecute$1(QueryExecution.scala:184)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:201)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:194)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:360)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:356)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:467)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:194)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyCommandExecuted$1(QueryExecution.scala:155)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	... 22 more
+

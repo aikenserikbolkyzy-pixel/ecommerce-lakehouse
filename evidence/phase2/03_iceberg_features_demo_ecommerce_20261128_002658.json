@@ -1,0 +1,80 @@
+{
+  "job": "03_iceberg_features_demo",
+  "namespace": "local.ecommerce",
+  "started_utc": "2026-11-28T00:25:05+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "A1 DELETE one customer (merge-on-read)": 5.9,
+    "A2 time travel queries": 11.7,
+    "A3 rollback_to_snapshot": 0.5,
+    "B1 ALTER TABLE ADD COLUMN": 0.6,
+    "C1 initial load (until 2019-11-15 12:00)": 14.2,
+    "C1b stage incremental batch": 9.1,
+    "C2 MERGE INTO": 5.9,
+    "C3 verify against full recomputation": 10.9
+  },
+  "time_travel": {
+    "customer_user_id": 464610644,
+    "rows_before": 5,
+    "snapshot_before": 6685764873852814284,
+    "snapshot_after_delete": 1543874853885361232,
+    "rows_after_delete": 0,
+    "rows_version_as_of_before": 5,
+    "rows_timestamp_as_of_before": 5,
+    "delete_files_after_delete": 1,
+    "table_rows_before": 109563335,
+    "table_rows_after_delete": 109563330,
+    "pass": true,
+    "rows_after_rollback": 5,
+    "rollback_pass": true
+  },
+  "schema_evolution": {
+    "column": "is_high_value_item",
+    "data_files_before": 66,
+    "data_files_after": 66,
+    "same_data_files": true,
+    "snapshot_before": 6685764873852814284,
+    "snapshot_after": 6685764873852814284,
+    "same_snapshot": true,
+    "metadata_versions_before": 8,
+    "metadata_versions_after": 9,
+    "old_rows_checked": 1241586,
+    "old_rows_non_null": 0,
+    "pass": true
+  },
+  "merge_into": {
+    "initial_snapshot": {
+      "snapshot_id": 5134603986298410919,
+      "committed_at_utc": "2026-11-28 00:26:25.118",
+      "operation": "append",
+      "total_records": 644,
+      "total_data_files": 1,
+      "total_delete_files": 0,
+      "added_records": 644,
+      "deleted_records": null,
+      "total_files_size_bytes": 14080
+    },
+    "merge_snapshot": {
+      "snapshot_id": 2507374301883903539,
+      "committed_at_utc": "2026-11-28 00:26:45.816",
+      "operation": "overwrite",
+      "total_records": 854,
+      "total_data_files": 1,
+      "total_delete_files": 0,
+      "added_records": 854,
+      "deleted_records": 644,
+      "total_files_size_bytes": 16461
+    },
+    "source_rows": 224,
+    "expected_updates": 14,
+    "expected_inserts": 210,
+    "rows_by_load_batch": {
+      "incremental": 224,
+      "initial": 630
+    },
+    "mismatches_vs_full_recompute": 0,
+    "pass": true
+  },
+  "total_sec": 112.9
+}

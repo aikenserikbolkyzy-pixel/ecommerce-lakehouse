@@ -1,0 +1,108 @@
+{
+  "job": "04_gold_aggregations",
+  "namespace": "local.ecommerce",
+  "started_utc": "2026-11-28T01:09:12+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "gold_funnel_metrics": 375.7,
+    "gold_rfm_segments": 29.0,
+    "gold_rfm_segment_summary + rf grid": 27.3,
+    "gold_hourly_trends": 45.4,
+    "export small gold tables to CSV": 8.7
+  },
+  "rfm_reference_date": "2019-12-01",
+  "rfm_quantile_cuts": {
+    "recency_days": [
+      11,
+      15,
+      28,
+      44
+    ],
+    "monetary": [
+      90.06,
+      189.19,
+      364.65,
+      859.82
+    ],
+    "frequency": "fixed bins 1 | 2 | 3 | 4-5 | 6+"
+  },
+  "users_total": 5315274,
+  "buyers_total": 697470,
+  "snapshots": {
+    "gold_funnel_metrics": {
+      "snapshot_id": 697412991852924201,
+      "committed_at_utc": "2026-11-28 01:15:28.163",
+      "operation": "append",
+      "total_records": 5627,
+      "total_data_files": 10,
+      "total_delete_files": 0,
+      "added_records": 5627,
+      "deleted_records": null,
+      "total_files_size_bytes": 254303
+    },
+    "gold_rfm_segments": {
+      "snapshot_id": 8597872122798324593,
+      "committed_at_utc": "2026-11-28 01:15:57.989",
+      "operation": "append",
+      "total_records": 697470,
+      "total_data_files": 48,
+      "total_delete_files": 0,
+      "added_records": 697470,
+      "deleted_records": null,
+      "total_files_size_bytes": 12433752
+    },
+    "gold_rfm_segment_summary": {
+      "snapshot_id": 5106416958415125422,
+      "committed_at_utc": "2026-11-28 01:16:21.369",
+      "operation": "append",
+      "total_records": 9,
+      "total_data_files": 9,
+      "total_delete_files": 0,
+      "added_records": 9,
+      "deleted_records": null,
+      "total_files_size_bytes": 24808
+    },
+    "gold_rfm_rf_grid": {
+      "snapshot_id": 3014132078906709517,
+      "committed_at_utc": "2026-11-28 01:16:24.675",
+      "operation": "append",
+      "total_records": 25,
+      "total_data_files": 1,
+      "total_delete_files": 0,
+      "added_records": 25,
+      "deleted_records": null,
+      "total_files_size_bytes": 2086
+    },
+    "gold_hourly_trends": {
+      "snapshot_id": 8436345112301144070,
+      "committed_at_utc": "2026-11-28 01:17:11.966",
+      "operation": "append",
+      "total_records": 1464,
+      "total_data_files": 8,
+      "total_delete_files": 0,
+      "added_records": 1464,
+      "deleted_records": null,
+      "total_files_size_bytes": 75259
+    }
+  },
+  "exports": {
+    "gold_funnel_metrics": {
+      "path": "/home/aykkenn/ecommerce-lakehouse/results/gold_funnel_metrics.csv",
+      "rows": 5627
+    },
+    "gold_rfm_segments_summary": {
+      "path": "/home/aykkenn/ecommerce-lakehouse/results/gold_rfm_segments_summary.csv",
+      "rows": 9
+    },
+    "gold_rfm_rf_grid": {
+      "path": "/home/aykkenn/ecommerce-lakehouse/results/gold_rfm_rf_grid.csv",
+      "rows": 25
+    },
+    "gold_hourly_trends": {
+      "path": "/home/aykkenn/ecommerce-lakehouse/results/gold_hourly_trends.csv",
+      "rows": 1464
+    }
+  },
+  "total_sec": 488.9
+}

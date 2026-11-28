@@ -1,0 +1,44 @@
+{
+  "job": "01_ingest_bronze",
+  "namespace": "local.ecommerce_dev",
+  "started_utc": "2026-11-27T23:25:49+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "write bronze (CSV parse + Iceberg write)": 118.3,
+    "verify bronze": 49.7
+  },
+  "sample_fraction": 0.01,
+  "shuffles_in_plan": 0,
+  "snapshot": {
+    "snapshot_id": 6945856327744926298,
+    "committed_at_utc": "2026-11-27 23:27:49.405",
+    "operation": "append",
+    "total_records": 1099196,
+    "total_data_files": 495,
+    "total_delete_files": 0,
+    "added_records": 1099196,
+    "deleted_records": null,
+    "total_files_size_bytes": 43895944
+  },
+  "layout": {
+    "data_files": 495,
+    "data_bytes": 43895944,
+    "data_mb": 41.9,
+    "partitions": 182
+  },
+  "rows": 1099196,
+  "unparsed_event_time": 0,
+  "time_range_utc": [
+    "2019-10-01 00:00:43",
+    "2019-11-30 23:58:03"
+  ],
+  "rows_by_event_type": {
+    "view": 1042983,
+    "cart": 39501,
+    "purchase": 16712
+  },
+  "purchases_2019_11_17": 1927,
+  "manifest_rows": null,
+  "total_sec": 172.6
+}

@@ -1,0 +1,786 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 04:33:15 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 04:33:21 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 04:33:21 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 04:33:21 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 04:33:21 INFO ResourceUtils: ==============================================================
+26/11/28 04:33:21 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 04:33:21 INFO ResourceUtils: ==============================================================
+26/11/28 04:33:21 INFO SparkContext: Submitted application: phase2-03-iceberg-features
+26/11/28 04:33:22 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 04:33:22 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 04:33:22 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 04:33:22 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 04:33:22 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 04:33:23 INFO Utils: Successfully started service 'sparkDriver' on port 46495.
+26/11/28 04:33:23 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 04:33:23 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 04:33:23 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 04:33:23 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 04:33:23 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 04:33:23 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-2958e915-d35e-4146-ba2f-6f99ebc9df72
+26/11/28 04:33:23 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 04:33:24 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 04:33:24 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 04:33:24 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:46495/files/common.py with timestamp 1795822401782
+26/11/28 04:33:24 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-ea9d30e8-e93a-48a8-9e27-d617562ad974/userFiles-4c0b014f-2e88-4fcc-94c1-fa9e06c1d7de/common.py
+26/11/28 04:33:25 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 04:33:25 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 04:33:25 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 04:33:25 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 04:33:25 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 04:33:25 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 04:33:25 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 04:33:25 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 04:33:25 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 04:33:25 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 80 ms (0 ms spent in bootstraps)
+26/11/28 04:33:26 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128043326-0002
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128043326-0002/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 04:33:26 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128043326-0002/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128043326-0002/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 04:33:26 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128043326-0002/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128043326-0002/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 04:33:26 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128043326-0002/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128043326-0002/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 04:33:26 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128043326-0002/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128043326-0002/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 04:33:26 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128043326-0002/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 04:33:26 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46409.
+26/11/28 04:33:26 INFO NettyBlockTransferService: Server created on master:46409
+26/11/28 04:33:26 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128043326-0002/3 is now RUNNING
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128043326-0002/4 is now RUNNING
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128043326-0002/0 is now RUNNING
+26/11/28 04:33:26 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 46409, None)
+26/11/28 04:33:26 INFO BlockManagerMasterEndpoint: Registering block manager master:46409 with 434.4 MiB RAM, BlockManagerId(driver, master, 46409, None)
+26/11/28 04:33:26 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 46409, None)
+26/11/28 04:33:26 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 46409, None)
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128043326-0002/2 is now RUNNING
+26/11/28 04:33:26 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128043326-0002/1 is now RUNNING
+26/11/28 04:33:29 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:59894) with ID 4, ResourceProfileId 0
+26/11/28 04:33:29 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:59900) with ID 3, ResourceProfileId 0
+26/11/28 04:33:29 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:39315 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 39315, None)
+26/11/28 04:33:29 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:42101 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 42101, None)
+26/11/28 04:33:30 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:46244) with ID 2, ResourceProfileId 0
+26/11/28 04:33:30 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:46254) with ID 1, ResourceProfileId 0
+26/11/28 04:33:30 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:45759 with 660.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 45759, None)
+26/11/28 04:33:30 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46031 with 660.0 MiB RAM, BlockManagerId(1, 192.168.100.15, 46031, None)
+26/11/28 04:33:31 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128043326-0002/events_1_app-20261128043326-0002.zstd
+26/11/28 04:33:33 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 04:33:43 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:46618) with ID 0, ResourceProfileId 0
+26/11/28 04:33:44 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:44983 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 44983, None)
+[23:33:51] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce_dev | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  A. SNAPSHOTS, TIME TRAVEL, ROW-LEVEL DELETE, ROLLBACK
+==============================================================================
++-------------------+-------------------+---------+-------------+-------------+
+|snapshot_id        |committed_utc      |operation|added_records|total_records|
++-------------------+-------------------+---------+-------------+-------------+
+|3359075505574004976|2026-11-27 23:32:36|append   |1096693      |1096693      |
++-------------------+-------------------+---------+-------------+-------------+
+
+26/11/28 04:34:44 ERROR TaskSchedulerImpl: Lost executor 1 on 192.168.100.15: worker lost: Not receiving heartbeat for 60 seconds
+26/11/28 04:34:44 ERROR TaskSchedulerImpl: Lost executor 2 on 192.168.100.15: worker lost: Not receiving heartbeat for 60 seconds
+[23:34:46]   current snapshot s0 = 3359075505574004976 committed 2026-11-27 23:32:36.838 UTC
+26/11/28 04:34:54 WARN DataStreamer: Exception for BP-584031413-192.168.100.47-1795812278793:blk_1073742523_1700
+java.io.IOException: Bad response ERROR for BP-584031413-192.168.100.47-1795812278793:blk_1073742523_1700 from datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+	at org.apache.hadoop.hdfs.DataStreamer$ResponseProcessor.run(DataStreamer.java:1223)
+26/11/28 04:34:54 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742523_1700 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:34:54 WARN DataStreamer: Slow waitForAckedSeqno took 63354ms (threshold=30000ms). File being written: /spark-logs/eventlog_v2_app-20261128043326-0002/events_1_app-20261128043326-0002.zstd, block: BP-584031413-192.168.100.47-1795812278793:blk_1073742523_1701, Write pipeline datanodes: [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]].
+[23:34:55]   customer 512370503: 1 events, table total 1,096,693
+[23:34:55] > A1 DELETE one customer (merge-on-read)
+26/11/28 04:37:15 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742526_1704
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:37:15 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742526_1704 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:37:15 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742526_1704
+26/11/28 04:37:15 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:37:15 WARN DataStreamer: Slow waitForAckedSeqno took 70065ms (threshold=30000ms). File being written: /warehouse/iceberg/ecommerce_dev/silver_events/metadata/9f21aeab-ef86-4fab-bb77-56b8eb51d1ab-m0.avro, block: BP-584031413-192.168.100.47-1795812278793:blk_1073742527_1705, Write pipeline datanodes: [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]].
+26/11/28 04:38:25 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742528_1706
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:38:25 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742528_1706 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:38:25 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742528_1706
+26/11/28 04:38:25 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:38:25 WARN DataStreamer: Slow waitForAckedSeqno took 70112ms (threshold=30000ms). File being written: /warehouse/iceberg/ecommerce_dev/silver_events/metadata/snap-894175008866079114-1-9f21aeab-ef86-4fab-bb77-56b8eb51d1ab.avro, block: BP-584031413-192.168.100.47-1795812278793:blk_1073742529_1707, Write pipeline datanodes: [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]].
+26/11/28 04:39:03 WARN BlockManagerMasterEndpoint: Error trying to remove broadcast 4. The executor 1 may have been lost.
+org.apache.spark.rpc.RpcTimeoutException: Cannot receive any reply from /192.168.100.15:46254 in 300 seconds. This timeout is controlled by spark.network.timeout
+	at org.apache.spark.rpc.RpcTimeout.org$apache$spark$rpc$RpcTimeout$$createRpcTimeoutException(RpcTimeout.scala:47)
+	at org.apache.spark.rpc.RpcTimeout$$anonfun$addMessageIfTimeout$1.applyOrElse(RpcTimeout.scala:62)
+	at org.apache.spark.rpc.RpcTimeout$$anonfun$addMessageIfTimeout$1.applyOrElse(RpcTimeout.scala:58)
+	at scala.util.Failure.recover(Try.scala:242)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:520)
+	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+	at scala.concurrent.impl.ExecutionContextImpl.execute(ExecutionContextImpl.scala:21)
+	at scala.concurrent.impl.Promise$Transformation.submitWithValue(Promise.scala:462)
+	at scala.concurrent.impl.Promise$DefaultPromise.submitWithValue(Promise.scala:371)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete0(Promise.scala:295)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:537)
+	at scala.concurrent.ExecutionContext$parasitic$.execute(ExecutionContext.scala:222)
+	at scala.concurrent.impl.Promise$Transformation.submitWithValue(Promise.scala:462)
+	at scala.concurrent.impl.Promise$DefaultPromise.submitWithValue(Promise.scala:368)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete0(Promise.scala:295)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.tryFailure(Promise.scala:117)
+	at scala.concurrent.Promise.tryFailure$(Promise.scala:117)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryFailure(Promise.scala:104)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.org$apache$spark$rpc$netty$NettyRpcEnv$$onFailure$1(NettyRpcEnv.scala:217)
+	at org.apache.spark.rpc.netty.NettyRpcEnv$$anon$1.run(NettyRpcEnv.scala:267)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.TimeoutException: Cannot receive any reply from /192.168.100.15:46254 in 300 seconds
+	at org.apache.spark.rpc.netty.NettyRpcEnv$$anon$1.run(NettyRpcEnv.scala:268)
+	... 6 more
+26/11/28 04:39:03 WARN BlockManagerMasterEndpoint: Error trying to remove broadcast 4. The executor 2 may have been lost.
+org.apache.spark.rpc.RpcTimeoutException: Cannot receive any reply from /192.168.100.15:46244 in 300 seconds. This timeout is controlled by spark.network.timeout
+	at org.apache.spark.rpc.RpcTimeout.org$apache$spark$rpc$RpcTimeout$$createRpcTimeoutException(RpcTimeout.scala:47)
+	at org.apache.spark.rpc.RpcTimeout$$anonfun$addMessageIfTimeout$1.applyOrElse(RpcTimeout.scala:62)
+	at org.apache.spark.rpc.RpcTimeout$$anonfun$addMessageIfTimeout$1.applyOrElse(RpcTimeout.scala:58)
+	at scala.util.Failure.recover(Try.scala:242)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:520)
+	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+	at scala.concurrent.impl.ExecutionContextImpl.execute(ExecutionContextImpl.scala:21)
+	at scala.concurrent.impl.Promise$Transformation.submitWithValue(Promise.scala:462)
+	at scala.concurrent.impl.Promise$DefaultPromise.submitWithValue(Promise.scala:371)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete0(Promise.scala:295)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:537)
+	at scala.concurrent.ExecutionContext$parasitic$.execute(ExecutionContext.scala:222)
+	at scala.concurrent.impl.Promise$Transformation.submitWithValue(Promise.scala:462)
+	at scala.concurrent.impl.Promise$DefaultPromise.submitWithValue(Promise.scala:368)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete0(Promise.scala:295)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.tryFailure(Promise.scala:117)
+	at scala.concurrent.Promise.tryFailure$(Promise.scala:117)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryFailure(Promise.scala:104)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.org$apache$spark$rpc$netty$NettyRpcEnv$$onFailure$1(NettyRpcEnv.scala:217)
+	at org.apache.spark.rpc.netty.NettyRpcEnv$$anon$1.run(NettyRpcEnv.scala:267)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.TimeoutException: Cannot receive any reply from /192.168.100.15:46244 in 300 seconds
+	at org.apache.spark.rpc.netty.NettyRpcEnv$$anon$1.run(NettyRpcEnv.scala:268)
+	... 6 more
+26/11/28 04:39:35 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742530_1708
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:39:35 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742530_1708 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:39:35 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742530_1708
+26/11/28 04:39:35 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:39:35 WARN DataStreamer: Slow waitForAckedSeqno took 70116ms (threshold=30000ms). File being written: /warehouse/iceberg/ecommerce_dev/silver_events/metadata/55836359-b587-4f44-96bc-92633e80fc8b.metadata.json, block: BP-584031413-192.168.100.47-1795812278793:blk_1073742531_1709, Write pipeline datanodes: [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]].
+26/11/28 04:40:40 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742532_1710
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:40:40 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742532_1710 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:40:40 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742532_1710
+26/11/28 04:40:40 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:40:40 WARN DataStreamer: Slow waitForAckedSeqno took 65122ms (threshold=30000ms). File being written: /warehouse/iceberg/ecommerce_dev/silver_events/metadata/979309dc-97f7-448e-98fb-5b670c2f147a-version-hint.temp, block: BP-584031413-192.168.100.47-1795812278793:blk_1073742533_1711, Write pipeline datanodes: [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]].
+[23:40:41]   A1 DELETE one customer (merge-on-read): 345.5s
+[23:40:41]   new snapshot s1 = 894175008866079114 (delete), delete files total = 1
++----------------+-----+-------+
+|file_type       |files|records|
++----------------+-----+-------+
+|data            |61   |1096693|
+|position deletes|1    |1      |
++----------------+-----+-------+
+
+[23:40:42] > A2 time travel queries
+[23:40:46]   A2 time travel queries: 3.8s
+[23:40:46]   customer rows: current=0  VERSION AS OF s0=1  TIMESTAMP AS OF '2026-11-27 23:32:36.838'=1
+[23:40:46]   table rows:    current=1,096,692  before=1,096,693  (diff 1)
+[23:40:46] > A3 rollback_to_snapshot
+26/11/28 04:40:46 WARN Spark3Util: Failed to load catalog: ecommerce_dev
+org.apache.spark.sql.connector.catalog.CatalogNotFoundException: [CATALOG_NOT_FOUND] The catalog `ecommerce_dev` not found. Consider to set the SQL config "spark.sql.catalog.ecommerce_dev" to a catalog plugin. SQLSTATE: 42P08
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.catalogNotFoundError(QueryExecutionErrors.scala:1869)
+	at org.apache.spark.sql.connector.catalog.Catalogs$.load(Catalogs.scala:57)
+	at org.apache.spark.sql.connector.catalog.CatalogManager.$anonfun$catalog$1(CatalogManager.scala:56)
+	at scala.collection.mutable.HashMap.getOrElseUpdate(HashMap.scala:469)
+	at org.apache.spark.sql.connector.catalog.CatalogManager.catalog(CatalogManager.scala:56)
+	at org.apache.iceberg.spark.Spark3Util.lambda$catalogAndIdentifier$4(Spark3Util.java:836)
+	at org.apache.iceberg.spark.SparkUtil.catalogAndIdentifier(SparkUtil.java:122)
+	at org.apache.iceberg.spark.Spark3Util.catalogAndIdentifier(Spark3Util.java:832)
+	at org.apache.iceberg.spark.Spark3Util.catalogAndIdentifier(Spark3Util.java:787)
+	at org.apache.iceberg.spark.Spark3Util.catalogAndIdentifier(Spark3Util.java:799)
+	at org.apache.iceberg.spark.procedures.ProcedureInput.catalogAndIdent(ProcedureInput.java:243)
+	at org.apache.iceberg.spark.procedures.ProcedureInput.ident(ProcedureInput.java:215)
+	at org.apache.iceberg.spark.procedures.RollbackToSnapshotProcedure.call(RollbackToSnapshotProcedure.java:88)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures.org$apache$spark$sql$catalyst$analysis$InvokeProcedures$$invoke(InvokeProcedures.scala:48)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures$$anonfun$apply$1.applyOrElse(InvokeProcedures.scala:40)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures$$anonfun$apply$1.applyOrElse(InvokeProcedures.scala:36)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$2(AnalysisHelper.scala:200)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.$anonfun$resolveOperatorsDownWithPruning$1(AnalysisHelper.scala:200)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.allowInvokingTransformsInAnalyzer(AnalysisHelper.scala:416)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning(AnalysisHelper.scala:198)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsDownWithPruning$(AnalysisHelper.scala:194)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning(AnalysisHelper.scala:100)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperatorsWithPruning$(AnalysisHelper.scala:97)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperatorsWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators(AnalysisHelper.scala:77)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.resolveOperators$(AnalysisHelper.scala:76)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.resolveOperators(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures.apply(InvokeProcedures.scala:36)
+	at org.apache.spark.sql.catalyst.analysis.InvokeProcedures.apply(InvokeProcedures.scala:34)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$2(RuleExecutor.scala:248)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1(RuleExecutor.scala:245)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$execute$1$adapted(RuleExecutor.scala:237)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.execute(RuleExecutor.scala:237)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.org$apache$spark$sql$catalyst$analysis$Analyzer$$executeSameContext(Analyzer.scala:343)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$execute$1(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.AnalysisContext$.withNewAnalysisContext(Analyzer.scala:224)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:339)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.execute(Analyzer.scala:289)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.$anonfun$executeAndTrack$1(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker$.withTracker(QueryPlanningTracker.scala:89)
+	at org.apache.spark.sql.catalyst.rules.RuleExecutor.executeAndTrack(RuleExecutor.scala:207)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.resolveInFixedPoint(HybridAnalyzer.scala:236)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.$anonfun$apply$1(HybridAnalyzer.scala:91)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.withTrackedAnalyzerBridgeState(HybridAnalyzer.scala:122)
+	at org.apache.spark.sql.catalyst.analysis.resolver.HybridAnalyzer.apply(HybridAnalyzer.scala:84)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.$anonfun$executeAndCheck$1(Analyzer.scala:322)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:423)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:322)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$2(QueryExecution.scala:139)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyAnalyzed$1(QueryExecution.scala:139)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:150)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:90)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$5(Dataset.scala:138)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:135)
+	at org.apache.spark.sql.classic.SparkSession.$anonfun$sql$1(SparkSession.scala:535)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:502)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:540)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/11/28 04:41:01 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742534_1712
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:01 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742534_1712 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:01 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742534_1712
+26/11/28 04:41:01 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:04 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742536_1714
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:04 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742536_1714 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:04 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742536_1714
+26/11/28 04:41:04 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+[23:41:04]   A3 rollback_to_snapshot: 17.8s
+[23:41:05]   after rollback: customer rows = 1 (expected 1)
++-------------------+-------------------+-------------------+-------------------+
+|made_current_utc   |snapshot_id        |parent_id          |is_current_ancestor|
++-------------------+-------------------+-------------------+-------------------+
+|2026-11-27 23:32:36|3359075505574004976|NULL               |true               |
+|2026-11-27 23:38:25|894175008866079114 |3359075505574004976|false              |
+|2026-11-27 23:40:46|3359075505574004976|NULL               |true               |
++-------------------+-------------------+-------------------+-------------------+
+
+
+==============================================================================
+  B. SCHEMA EVOLUTION (metadata-only ADD COLUMN)
+==============================================================================
+[23:41:06] > B1 ALTER TABLE ADD COLUMN
+26/11/28 04:41:09 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742538_1716
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:09 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742538_1716 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:09 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742538_1716
+26/11/28 04:41:09 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:12 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742540_1718
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:12 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742540_1718 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:12 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742540_1718
+26/11/28 04:41:12 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+[23:41:12]   B1 ALTER TABLE ADD COLUMN: 6.3s
++------------------+---------+---------------------------------------------------------------------------+
+|col_name          |data_type|comment                                                                    |
++------------------+---------+---------------------------------------------------------------------------+
+|brand             |string   |NULL                                                                       |
+|price             |double   |NULL                                                                       |
+|is_high_value_item|boolean  |Flag for expensive items; added by schema evolution, NULL for existing rows|
++------------------+---------+---------------------------------------------------------------------------+
+
++-------------------+-------+------+------------------+
+|event_time         |brand  |price |is_high_value_item|
++-------------------+-------+------+------------------+
+|2019-10-04 10:57:07|lg     |360.34|NULL              |
+|2019-10-04 03:50:24|samsung|254.57|NULL              |
+|2019-10-04 08:52:12|gorenje|321.73|NULL              |
+|2019-10-04 17:16:06|samsung|370.56|NULL              |
+|2019-10-04 17:18:31|sony   |385.31|NULL              |
++-------------------+-------+------+------------------+
+
++-------------------+-------------------+----------------+------------------------------------------------------------------------------------------+
+|ts_utc             |latest_snapshot_id |latest_schema_id|file                                                                                      |
++-------------------+-------------------+----------------+------------------------------------------------------------------------------------------+
+|2026-11-27 23:41:06|3359075505574004976|0               |hdfs://master:9000/warehouse/iceberg/ecommerce_dev/silver_events/metadata/v5.metadata.json|
+|2026-11-27 23:40:46|3359075505574004976|0               |hdfs://master:9000/warehouse/iceberg/ecommerce_dev/silver_events/metadata/v4.metadata.json|
+|2026-11-27 23:38:25|894175008866079114 |0               |hdfs://master:9000/warehouse/iceberg/ecommerce_dev/silver_events/metadata/v3.metadata.json|
++-------------------+-------------------+----------------+------------------------------------------------------------------------------------------+
+
+[23:41:16]   [PASS] no data file rewritten (61 files before / 61 after), snapshot unchanged, new metadata version 4 -> 5
+
+==============================================================================
+  C. ACID UPSERT WITH MERGE INTO
+==============================================================================
+[23:41:17] > C1 initial load (until 2019-11-15 12:00)
+26/11/28 04:41:21 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742542_1720
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:21 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742542_1720 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:21 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742542_1720
+26/11/28 04:41:21 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:25 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742544_1722
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:25 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742544_1722 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:25 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742544_1722
+26/11/28 04:41:25 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:39 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742548_1726
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:39 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742548_1726 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:39 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742548_1726
+26/11/28 04:41:39 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:42 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742550_1728
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:42 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742550_1728 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:42 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742550_1728
+26/11/28 04:41:42 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:43 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742552_1730
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:43 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742552_1730 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:43 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742552_1730
+26/11/28 04:41:43 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+26/11/28 04:41:46 WARN DataStreamer: Exception in createBlockOutputStream blk_1073742554_1732
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 192.168.100.15:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:128)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:104)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1947)
+	at org.apache.hadoop.hdfs.DataStreamer.setupPipelineForCreate(DataStreamer.java:1842)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:752)
+26/11/28 04:41:46 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073742554_1732 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]]: datanode 2(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 04:41:46 WARN DataStreamer: Abandoning BP-584031413-192.168.100.47-1795812278793:blk_1073742554_1732
+26/11/28 04:41:46 WARN DataStreamer: Excluding datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+[23:41:47]   C1 initial load (until 2019-11-15 12:00): 30.3s
+[23:41:47]   initial snapshot 448037914047863240: 640 rows
+[23:41:50]   incremental batch: 224 rows -> expect 14 UPDATE, 210 INSERT
+  2019-11-15 BEFORE merge (partial day):
++----------+-------------+-----+-----+---------+-------+----------+
+|event_date|main_category|views|carts|purchases|revenue|load_batch|
++----------+-------------+-----+-----+---------+-------+----------+
+|2019-11-15|electronics  |10258|1501 |0        |0.0    |initial   |
+|2019-11-15|unknown      |8998 |669  |0        |0.0    |initial   |
+|2019-11-15|appliances   |4684 |400  |0        |0.0    |initial   |
+|2019-11-15|computers    |2131 |123  |0        |0.0    |initial   |
+|2019-11-15|apparel      |1083 |44   |0        |0.0    |initial   |
++----------+-------------+-----+-----+---------+-------+----------+
+
+[23:41:51] > C2 MERGE INTO
+[23:41:53]   C2 MERGE INTO: 2.1s
+Traceback (most recent call last):
+  File "/home/aykkenn/ecommerce-lakehouse/jobs/phase2/03_iceberg_features_demo.py", line 289, in <module>
+    main()
+    ~~~~^^
+  File "/home/aykkenn/ecommerce-lakehouse/jobs/phase2/03_iceberg_features_demo.py", line 277, in main
+    demo_merge(spark, run)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "/home/aykkenn/ecommerce-lakehouse/jobs/phase2/03_iceberg_features_demo.py", line 224, in demo_merge
+    spark.sql(f"""
+    ~~~~~~~~~^^^^^
+        MERGE INTO {T} t
+        ^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        WHEN NOT MATCHED THEN INSERT *
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    """)
+    ^^^^
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 1816, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.9-src.zip/py4j/java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 263, in deco
+    return f(*a, **kw)
+  File "/opt/spark/python/lib/py4j-0.10.9.9-src.zip/py4j/protocol.py", line 327, in get_return_value
+    raise Py4JJavaError(
+        "An error occurred while calling {0}{1}{2}.\n".
+        format(target_id, ".", name), value)
+py4j.protocol.Py4JJavaError: An error occurred while calling o61.sql.
+: org.apache.spark.SparkException: [INTERNAL_ERROR] The Spark SQL phase planning failed with an internal error. You hit a bug in Spark or the Spark plugins you use. Please, report this bug to the corresponding communities or vendors, and provide the full stack trace. SQLSTATE: XX000
+	at org.apache.spark.SparkException$.internalError(SparkException.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$.toInternalError(QueryExecution.scala:706)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:719)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+	at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:349)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:396)
+	at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:364)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:163)
+	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$eagerlyExecuteCommands$1(QueryExecution.scala:185)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$eagerlyExecute$1(QueryExecution.scala:184)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:201)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:194)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:360)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:356)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:467)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:194)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyCommandExecuted$1(QueryExecution.scala:155)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.getTryWithCallerStacktrace(Utils.scala:1453)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:160)
+	at org.apache.spark.sql.classic.Dataset.<init>(Dataset.scala:276)
+	at org.apache.spark.sql.classic.Dataset$.$anonfun$ofRows$5(Dataset.scala:139)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.Dataset$.ofRows(Dataset.scala:135)
+	at org.apache.spark.sql.classic.SparkSession.$anonfun$sql$1(SparkSession.scala:535)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:502)
+	at org.apache.spark.sql.classic.SparkSession.sql(SparkSession.scala:540)
+	at jdk.internal.reflect.GeneratedMethodAccessor70.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:184)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+	Suppressed: org.apache.spark.util.Utils$OriginalTryStackTraceException: Full stacktrace of original doTryWithCallerStacktrace caller
+		at org.apache.spark.SparkException$.internalError(SparkException.scala:107)
+		at org.apache.spark.sql.execution.QueryExecution$.toInternalError(QueryExecution.scala:706)
+		at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:719)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+		at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+		at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+		at scala.util.Try$.apply(Try.scala:217)
+		at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+		at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+		at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+		at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+		at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+		at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:349)
+		at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:396)
+		at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:364)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:163)
+		at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+		at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+		at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+		at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+		at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+		at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+		at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+		at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+		at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+		at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$eagerlyExecuteCommands$1(QueryExecution.scala:185)
+		at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+		at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$eagerlyExecute$1(QueryExecution.scala:184)
+		at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:201)
+		at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:194)
+		at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:491)
+		at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+		at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:491)
+		at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:37)
+		at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:360)
+		at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:356)
+		at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+		at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+		at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:467)
+		at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:194)
+		at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyCommandExecuted$1(QueryExecution.scala:155)
+		at scala.util.Try$.apply(Try.scala:217)
+		at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+		at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+		at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+		... 21 more
+Caused by: java.lang.AssertionError: assertion failed: No plan for TableReference[event_time#794, event_date#795, event_hour#796, event_type#797, product_id#798L, category_id#799L, category_code#800, main_category#801, brand#802, price#803, user_id#804L, user_session#805, event_seq#806, sec_since_prev_event#807L, session_start#808, session_end#809, session_duration_sec#810L, session_event_count#811L, session_purchase_count#812, session_has_purchase#813, session_ended_with_purchase#814, is_high_value_item#815] local.ecommerce_dev.silver_events
+
+	at scala.Predef$.assert(Predef.scala:279)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+	at scala.collection.IterableOnceOps.foldLeft(IterableOnce.scala:738)
+	at scala.collection.IterableOnceOps.foldLeft$(IterableOnce.scala:732)
+	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1313)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+	at scala.collection.Iterator$$anon$10.nextCur(Iterator.scala:604)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:618)
+	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:79)
+	at org.apache.spark.sql.execution.QueryExecution$.createSparkPlan(QueryExecution.scala:656)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.compileSubquery(InsertAdaptiveSparkPlan.scala:167)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$4(InsertAdaptiveSparkPlan.scala:152)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$4$adapted(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:263)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:630)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:628)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:936)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$3(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$3$adapted(InsertAdaptiveSparkPlan.scala:148)
+	at scala.collection.immutable.List.foreach(List.scala:323)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$1(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$buildSubqueryMap$1$adapted(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:263)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1(TreeNode.scala:264)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$foreach$1$adapted(TreeNode.scala:264)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:2125)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:264)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.buildSubqueryMap(InsertAdaptiveSparkPlan.scala:148)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.applyInternal(InsertAdaptiveSparkPlan.scala:76)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.apply(InsertAdaptiveSparkPlan.scala:49)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.$anonfun$applyInternal$1(InsertAdaptiveSparkPlan.scala:55)
+	at scala.collection.immutable.Vector1.map(Vector.scala:2141)
+	at scala.collection.immutable.Vector1.map(Vector.scala:386)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.applyInternal(InsertAdaptiveSparkPlan.scala:55)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.apply(InsertAdaptiveSparkPlan.scala:49)
+	at org.apache.spark.sql.execution.adaptive.InsertAdaptiveSparkPlan.apply(InsertAdaptiveSparkPlan.scala:44)
+	at org.apache.spark.sql.execution.QueryExecution$.$anonfun$prepareForExecution$1(QueryExecution.scala:638)
+	at scala.collection.LinearSeqOps.foldLeft(LinearSeq.scala:183)
+	at scala.collection.LinearSeqOps.foldLeft$(LinearSeq.scala:179)
+	at scala.collection.immutable.List.foldLeft(List.scala:79)
+	at org.apache.spark.sql.execution.QueryExecution$.prepareForExecution(QueryExecution.scala:637)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$2(QueryExecution.scala:285)
+	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:148)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:330)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:330)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:329)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyExecutedPlan$1(QueryExecution.scala:285)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.get(LazyTry.scala:58)
+	at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:295)
+	at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:349)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:396)
+	at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:364)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$8(SQLExecution.scala:163)
+	at org.apache.spark.sql.execution.SQLExecution$.withSessionTagsApplied(SQLExecution.scala:285)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$7(SQLExecution.scala:139)
+	at org.apache.spark.JobArtifactSet$.withActiveJobArtifactState(JobArtifactSet.scala:94)
+	at org.apache.spark.sql.artifact.ArtifactManager.$anonfun$withResources$1(ArtifactManager.scala:112)
+	at org.apache.spark.sql.artifact.ArtifactManager.withClassLoaderIfNeeded(ArtifactManager.scala:106)
+	at org.apache.spark.sql.artifact.ArtifactManager.withResources(ArtifactManager.scala:111)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$6(SQLExecution.scala:139)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:308)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId0$1(SQLExecution.scala:138)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:804)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId0(SQLExecution.scala:92)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:250)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$eagerlyExecuteCommands$1(QueryExecution.scala:185)
+	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:717)
+	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$eagerlyExecute$1(QueryExecution.scala:184)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:201)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$3.applyOrElse(QueryExecution.scala:194)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:107)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:491)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:360)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:356)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:37)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:467)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:194)
+	at org.apache.spark.sql.execution.QueryExecution.$anonfun$lazyCommandExecuted$1(QueryExecution.scala:155)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.Utils$.doTryWithCallerStacktrace(Utils.scala:1392)
+	at org.apache.spark.util.LazyTry.tryT$lzycompute(LazyTry.scala:46)
+	at org.apache.spark.util.LazyTry.tryT(LazyTry.scala:46)
+	... 21 more
+

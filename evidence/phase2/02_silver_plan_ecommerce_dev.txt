@@ -1,0 +1,70 @@
+== Physical Plan ==
+AdaptiveSparkPlan (12)
++- Project (11)
+   +- Window (10)
+      +- Project (9)
+         +- Window (8)
+            +- Sort (7)
+               +- Project (6)
+                  +- HashAggregate (5)
+                     +- HashAggregate (4)
+                        +- Exchange (3)
+                           +- Filter (2)
+                              +- BatchScan local.ecommerce_dev.bronze_events (1)
+
+
+(1) BatchScan local.ecommerce_dev.bronze_events
+Output [9]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#4, brand#5, price#6, user_id#7L, user_session#8]
+IcebergScan(table=local.ecommerce_dev.bronze_events, schemaId=0, snapshotId=6945856327744926298, branch=null, filters=event_time IS NOT NULL, price IS NOT NULL, price > 0.0, user_id IS NOT NULL, user_session IS NOT NULL, event_type IS NOT NULL, event_type IN ('view', 'cart', 'remove_from_cart', 'purchase'), runtimeFilters=, groupedBy=)
+
+(2) Filter
+Input [9]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#4, brand#5, price#6, user_id#7L, user_session#8]
+Condition : (((isnotnull(price#6) AND (price#6 > 0.0)) AND isnotnull(user_id#7L)) AND isnotnull(user_session#8))
+
+(3) Exchange
+Input [9]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#4, brand#5, price#6, user_id#7L, user_session#8]
+Arguments: hashpartitioning(user_id#7L, user_session#8, 48), REPARTITION_BY_COL, [plan_id=78]
+
+(4) HashAggregate
+Input [9]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#4, brand#5, price#6, user_id#7L, user_session#8]
+Keys [9]: [user_session#8, knownfloatingpointnormalized(normalizenanandzero(price#6)) AS price#6, product_id#2L, category_id#3L, category_code#4, brand#5, user_id#7L, event_time#0, event_type#1]
+Functions: []
+Aggregate Attributes: []
+Results [9]: [user_session#8, price#6, product_id#2L, category_id#3L, category_code#4, brand#5, user_id#7L, event_time#0, event_type#1]
+
+(5) HashAggregate
+Input [9]: [user_session#8, price#6, product_id#2L, category_id#3L, category_code#4, brand#5, user_id#7L, event_time#0, event_type#1]
+Keys [9]: [user_session#8, price#6, product_id#2L, category_id#3L, category_code#4, brand#5, user_id#7L, event_time#0, event_type#1]
+Functions: []
+Aggregate Attributes: []
+Results [9]: [event_time#0, event_type#1, product_id#2L, category_id#3L, CASE WHEN (isnull(category_code#4) OR (trim(category_code#4, None) = )) THEN unknown ELSE trim(category_code#4, None) END AS category_code#91, CASE WHEN (isnull(brand#5) OR (trim(brand#5, None) = )) THEN unknown ELSE trim(brand#5, None) END AS brand#90, price#6, user_id#7L, user_session#8]
+
+(6) Project
+Output [13]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, CASE WHEN (category_code#91 = unknown) THEN unknown ELSE substring_index(category_code#91, ., 1) END AS main_category#92, cast(event_time#0 as date) AS event_date#93, hour(event_time#0, Some(UTC)) AS event_hour#94, CASE WHEN (event_type#1 = view) THEN 1 WHEN (event_type#1 = cart) THEN 2 WHEN (event_type#1 = remove_from_cart) THEN 3 ELSE 4 END AS _ev_rank#95]
+Input [9]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8]
+
+(7) Sort
+Input [13]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, main_category#92, event_date#93, event_hour#94, _ev_rank#95]
+Arguments: [user_id#7L ASC NULLS FIRST, user_session#8 ASC NULLS FIRST, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST], false, 0
+
+(8) Window
+Input [13]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, main_category#92, event_date#93, event_hour#94, _ev_rank#95]
+Arguments: [row_number() windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS event_seq#96, lag(event_time#0, -1, null) windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, -1, -1)) AS _prev_ts#98, min(event_time#0) windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS session_start#99, max(event_time#0) windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS session_end#101, count(1) windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS session_event_count#103L], [user_id#7L, user_session#8], [event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST]
+
+(9) Project
+Output [19]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, main_category#92, event_date#93, event_hour#94, _ev_rank#95, event_seq#96, _prev_ts#98, session_start#99, session_end#101, session_event_count#103L, cast((event_type#1 = purchase) as int) AS _w0#107]
+Input [18]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, main_category#92, event_date#93, event_hour#94, _ev_rank#95, event_seq#96, _prev_ts#98, session_start#99, session_end#101, session_event_count#103L]
+
+(10) Window
+Input [19]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, main_category#92, event_date#93, event_hour#94, _ev_rank#95, event_seq#96, _prev_ts#98, session_start#99, session_end#101, session_event_count#103L, _w0#107]
+Arguments: [sum(_w0#107) windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS session_purchase_count#105L, last(event_type#1, false) windowspecdefinition(user_id#7L, user_session#8, event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS _last_type#108], [user_id#7L, user_session#8], [event_time#0 ASC NULLS FIRST, _ev_rank#95 ASC NULLS FIRST, product_id#2L ASC NULLS FIRST]
+
+(11) Project
+Output [21]: [event_time#0, event_date#93, event_hour#94, event_type#1, product_id#2L, category_id#3L, category_code#91, main_category#92, brand#90, price#6, user_id#7L, user_session#8, event_seq#96, (unix_timestamp(event_time#0, yyyy-MM-dd HH:mm:ss, Some(UTC), true) - unix_timestamp(_prev_ts#98, yyyy-MM-dd HH:mm:ss, Some(UTC), true)) AS sec_since_prev_event#110L, session_start#99, session_end#101, (unix_timestamp(session_end#101, yyyy-MM-dd HH:mm:ss, Some(UTC), true) - unix_timestamp(session_start#99, yyyy-MM-dd HH:mm:ss, Some(UTC), true)) AS session_duration_sec#111L, session_event_count#103L, cast(session_purchase_count#105L as int) AS session_purchase_count#112, (session_purchase_count#105L > 0) AS session_has_purchase#113, (_last_type#108 = purchase) AS session_ended_with_purchase#114]
+Input [21]: [event_time#0, event_type#1, product_id#2L, category_id#3L, category_code#91, brand#90, price#6, user_id#7L, user_session#8, main_category#92, event_date#93, event_hour#94, _ev_rank#95, event_seq#96, _prev_ts#98, session_start#99, session_end#101, session_event_count#103L, _w0#107, session_purchase_count#105L, _last_type#108]
+
+(12) AdaptiveSparkPlan
+Output [21]: [event_time#0, event_date#93, event_hour#94, event_type#1, product_id#2L, category_id#3L, category_code#91, main_category#92, brand#90, price#6, user_id#7L, user_session#8, event_seq#96, sec_since_prev_event#110L, session_start#99, session_end#101, session_duration_sec#111L, session_event_count#103L, session_purchase_count#112, session_has_purchase#113, session_ended_with_purchase#114]
+Arguments: isFinalPlan=false
+
+

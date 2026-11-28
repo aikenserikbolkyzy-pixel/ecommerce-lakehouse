@@ -1,0 +1,213 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 06:06:19 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 06:06:20 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 06:06:20 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 06:06:20 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 06:06:20 INFO ResourceUtils: ==============================================================
+26/11/28 06:06:20 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 06:06:20 INFO ResourceUtils: ==============================================================
+26/11/28 06:06:20 INFO SparkContext: Submitted application: phase2-03-iceberg-features
+26/11/28 06:06:20 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 06:06:20 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 06:06:20 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 06:06:20 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 06:06:20 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 06:06:21 INFO Utils: Successfully started service 'sparkDriver' on port 45527.
+26/11/28 06:06:21 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 06:06:21 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 06:06:21 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 06:06:21 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 06:06:21 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 06:06:21 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-419679d3-960b-4e64-a33d-770014d609ea
+26/11/28 06:06:21 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 06:06:21 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 06:06:21 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 06:06:21 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:45527/files/common.py with timestamp 1795827980726
+26/11/28 06:06:21 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-bf6b61d9-9bb7-4e77-9904-2fcfaf600696/userFiles-99bc3393-49a5-4852-a0fe-2e825ffe85bb/common.py
+26/11/28 06:06:21 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 06:06:21 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 06:06:21 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 06:06:21 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 06:06:21 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 06:06:21 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 06:06:21 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 06:06:21 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 06:06:21 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 24 ms (0 ms spent in bootstraps)
+26/11/28 06:06:21 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128060621-0013
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128060621-0013/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 06:06:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128060621-0013/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128060621-0013/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 06:06:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128060621-0013/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128060621-0013/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 06:06:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128060621-0013/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128060621-0013/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 06:06:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128060621-0013/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128060621-0013/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 06:06:21 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128060621-0013/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:06:21 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46653.
+26/11/28 06:06:21 INFO NettyBlockTransferService: Server created on master:46653
+26/11/28 06:06:21 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 06:06:21 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128060621-0013/0 is now RUNNING
+26/11/28 06:06:21 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 46653, None)
+26/11/28 06:06:21 INFO BlockManagerMasterEndpoint: Registering block manager master:46653 with 434.4 MiB RAM, BlockManagerId(driver, master, 46653, None)
+26/11/28 06:06:21 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 46653, None)
+26/11/28 06:06:21 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 46653, None)
+26/11/28 06:06:22 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128060621-0013/2 is now RUNNING
+26/11/28 06:06:22 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128060621-0013/1 is now RUNNING
+26/11/28 06:06:22 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128060621-0013/3 is now RUNNING
+26/11/28 06:06:22 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128060621-0013/4 is now RUNNING
+26/11/28 06:06:22 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128060621-0013/events_1_app-20261128060621-0013.zstd
+26/11/28 06:06:23 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 06:06:24 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:58388) with ID 3, ResourceProfileId 0
+26/11/28 06:06:25 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:58400) with ID 4, ResourceProfileId 0
+26/11/28 06:06:25 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:35221 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 35221, None)
+26/11/28 06:06:25 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:42645 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 42645, None)
+26/11/28 06:06:25 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:45802) with ID 2, ResourceProfileId 0
+26/11/28 06:06:25 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:45790) with ID 1, ResourceProfileId 0
+26/11/28 06:06:26 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46373 with 660.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 46373, None)
+26/11/28 06:06:26 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:45487 with 660.0 MiB RAM, BlockManagerId(1, 192.168.100.15, 45487, None)
+26/11/28 06:06:29 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:45434) with ID 0, ResourceProfileId 0
+26/11/28 06:06:30 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:46009 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 46009, None)
+[01:06:36] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  A. SNAPSHOTS, TIME TRAVEL, ROW-LEVEL DELETE, ROLLBACK
+==============================================================================
++-------------------+-------------------+---------+-------------+-------------+
+|snapshot_id        |committed_utc      |operation|added_records|total_records|
++-------------------+-------------------+---------+-------------+-------------+
+|6685764873852814284|2026-11-28 00:13:14|append   |109563335    |109563335    |
+|2784453342367387418|2026-11-28 00:16:01|delete   |NULL         |109563335    |
+|1543874853885361232|2026-11-28 00:25:42|delete   |NULL         |109563335    |
+|5958715422277853104|2026-11-28 00:36:22|delete   |NULL         |109563335    |
+|2379711207660808831|2026-11-28 01:04:21|delete   |NULL         |109563335    |
++-------------------+-------------------+---------+-------------+-------------+
+
+[01:06:51]   current snapshot s0 = 6685764873852814284 committed 2026-11-28 00:13:14.370 UTC
+[01:07:16]   customer 464610644: 5 events, table total 109,563,335
+[01:07:16] > A1 DELETE one customer (merge-on-read)
+[01:07:20]   A1 DELETE one customer (merge-on-read): 3.7s
+[01:07:21]   new snapshot s1 = 5786309574608289346 (delete), delete files total = 1
++----------------+-----+---------+
+|file_type       |files|records  |
++----------------+-----+---------+
+|data            |66   |109563335|
+|position deletes|1    |5        |
++----------------+-----+---------+
+
+[01:07:22] > A2 time travel queries
+[01:07:34]   A2 time travel queries: 12.5s
+[01:07:34]   customer rows: current=0  VERSION AS OF s0=5  TIMESTAMP AS OF '2026-11-28 00:13:14.370'=5
+[01:07:34]   table rows:    current=109,563,330  before=109,563,335  (diff 5)
+[01:07:34] > A3 rollback_to_snapshot
+[01:07:35]   A3 rollback_to_snapshot: 0.7s
+[01:07:38]   after rollback: customer rows = 5 (expected 5)
++-------------------+-------------------+-------------------+-------------------+
+|made_current_utc   |snapshot_id        |parent_id          |is_current_ancestor|
++-------------------+-------------------+-------------------+-------------------+
+|2026-11-28 00:13:14|6685764873852814284|NULL               |true               |
+|2026-11-28 00:16:01|2784453342367387418|6685764873852814284|false              |
+|2026-11-28 00:16:22|6685764873852814284|NULL               |true               |
+|2026-11-28 00:25:42|1543874853885361232|6685764873852814284|false              |
+|2026-11-28 00:25:58|6685764873852814284|NULL               |true               |
+|2026-11-28 00:36:22|5958715422277853104|6685764873852814284|false              |
+|2026-11-28 00:36:49|6685764873852814284|NULL               |true               |
+|2026-11-28 01:04:21|2379711207660808831|6685764873852814284|false              |
+|2026-11-28 01:04:31|6685764873852814284|NULL               |true               |
+|2026-11-28 01:07:20|5786309574608289346|6685764873852814284|false              |
+|2026-11-28 01:07:35|6685764873852814284|NULL               |true               |
++-------------------+-------------------+-------------------+-------------------+
+
+
+==============================================================================
+  B. SCHEMA EVOLUTION (metadata-only ADD COLUMN)
+==============================================================================
+[01:07:39]   is_high_value_item exists from a previous run -> DROP COLUMN (also metadata-only)
+[01:07:44] > B1 ALTER TABLE ADD COLUMN
+[01:07:44]   B1 ALTER TABLE ADD COLUMN: 0.3s
++------------------+---------+---------------------------------------------------------------------------+
+|col_name          |data_type|comment                                                                    |
++------------------+---------+---------------------------------------------------------------------------+
+|brand             |string   |NULL                                                                       |
+|price             |double   |NULL                                                                       |
+|is_high_value_item|boolean  |Flag for expensive items; added by schema evolution, NULL for existing rows|
++------------------+---------+---------------------------------------------------------------------------+
+
++-------------------+--------+------+------------------+
+|event_time         |brand   |price |is_high_value_item|
++-------------------+--------+------+------------------+
+|2019-11-14 04:49:03|hansa   |120.25|NULL              |
+|2019-11-14 14:56:40|confetti|17.76 |NULL              |
+|2019-11-14 14:59:43|unknown |37.58 |NULL              |
+|2019-11-14 09:08:22|samsung |460.5 |NULL              |
+|2019-11-14 11:13:18|pdw     |319.18|NULL              |
++-------------------+--------+------+------------------+
+
++-------------------+-------------------+----------------+---------------------------------------------------------------------------------------+
+|ts_utc             |latest_snapshot_id |latest_schema_id|file                                                                                   |
++-------------------+-------------------+----------------+---------------------------------------------------------------------------------------+
+|2026-11-28 01:07:44|6685764873852814284|0               |hdfs://master:9000/warehouse/iceberg/ecommerce/silver_events/metadata/v21.metadata.json|
+|2026-11-28 01:07:39|6685764873852814284|0               |hdfs://master:9000/warehouse/iceberg/ecommerce/silver_events/metadata/v20.metadata.json|
+|2026-11-28 01:07:35|6685764873852814284|0               |hdfs://master:9000/warehouse/iceberg/ecommerce/silver_events/metadata/v19.metadata.json|
++-------------------+-------------------+----------------+---------------------------------------------------------------------------------------+
+
+[01:07:49]   [PASS] no data file rewritten (66 files before / 66 after), snapshot unchanged, new metadata version 20 -> 21
+
+==============================================================================
+  C. ACID UPSERT WITH MERGE INTO
+==============================================================================
+[01:07:49] > C1 initial load (until 2019-11-15 12:00)
+[01:08:03]   C1 initial load (until 2019-11-15 12:00): 13.9s
+[01:08:03]   initial snapshot 6963844757781450233: 644 rows
+[01:08:03] > C1b stage incremental batch
+[01:08:13]   C1b stage incremental batch: 10.2s
+[01:08:14]   incremental batch: 224 rows -> expect 14 UPDATE, 210 INSERT
+  2019-11-15 BEFORE merge (partial day):
++----------+-------------+-------+------+---------+-------+----------+
+|event_date|main_category|views  |carts |purchases|revenue|load_batch|
++----------+-------------+-------+------+---------+-------+----------+
+|2019-11-15|electronics  |1046100|149800|0        |0.0    |initial   |
+|2019-11-15|unknown      |903605 |68827 |0        |0.0    |initial   |
+|2019-11-15|appliances   |478435 |38746 |0        |0.0    |initial   |
+|2019-11-15|computers    |214761 |12717 |0        |0.0    |initial   |
+|2019-11-15|apparel      |112247 |4040  |0        |0.0    |initial   |
++----------+-------------+-------+------+---------+-------+----------+
+
+[01:08:15] > C2 MERGE INTO
+[01:08:18]   C2 MERGE INTO: 3.2s
+[01:08:19]   merge snapshot 6196673315186554855 (overwrite): total rows 854, added 854, deleted(rewritten) 644
+  2019-11-15 AFTER merge (full day):
++----------+-------------+-------+------+---------+-------+-----------+
+|event_date|main_category|views  |carts |purchases|revenue|load_batch |
++----------+-------------+-------+------+---------+-------+-----------+
+|2019-11-15|electronics  |1884232|236950|0        |0.0    |incremental|
+|2019-11-15|unknown      |1787541|113871|0        |0.0    |incremental|
+|2019-11-15|appliances   |882850 |63662 |0        |0.0    |incremental|
+|2019-11-15|computers    |391365 |20454 |0        |0.0    |incremental|
+|2019-11-15|apparel      |245888 |7376  |0        |0.0    |incremental|
++----------+-------------+-------+------+---------+-------+-----------+
+
+  same rows via time travel to the snapshot BEFORE the merge:
++----------+-------------+-------+------+---------+-------+----------+
+|event_date|main_category|views  |carts |purchases|revenue|load_batch|
++----------+-------------+-------+------+---------+-------+----------+
+|2019-11-15|electronics  |1046100|149800|0        |0.0    |initial   |
+|2019-11-15|unknown      |903605 |68827 |0        |0.0    |initial   |
+|2019-11-15|appliances   |478435 |38746 |0        |0.0    |initial   |
+|2019-11-15|computers    |214761 |12717 |0        |0.0    |initial   |
+|2019-11-15|apparel      |112247 |4040  |0        |0.0    |initial   |
++----------+-------------+-------+------+---------+-------+----------+
+
+[01:08:20] > C3 verify against full recomputation
+[01:08:30]   C3 verify against full recomputation: 10.9s
+[01:08:30]   [PASS] MERGE result equals full recomputation (0 mismatching rows), rows by batch {'incremental': 224, 'initial': 630}
+
+==============================================================================
+  SUMMARY
+==============================================================================
+  [PASS] time_travel
+  [PASS] schema_evolution
+  [PASS] merge_into
+[01:08:30] Evidence written to /bigdata/evidence/phase2/03_iceberg_features_demo_ecommerce_20261128_010830.json  (total 114.0s)

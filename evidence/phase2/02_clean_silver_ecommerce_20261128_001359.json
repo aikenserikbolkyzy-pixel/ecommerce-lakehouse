@@ -1,0 +1,55 @@
+{
+  "job": "02_clean_silver",
+  "namespace": "local.ecommerce",
+  "started_utc": "2026-11-27T23:55:29+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "data-quality profile of bronze (1 pass)": 30.4,
+    "filter + dedup + clean + sessionize + write silver": 1029.4,
+    "session statistics": 43.5
+  },
+  "data_quality": {
+    "bronze_rows": 109950743,
+    "null_event_time": 0,
+    "null_price": 0,
+    "price_le_0": 256761,
+    "null_user_id": 0,
+    "null_user_session": 12,
+    "bad_event_type": 0,
+    "null_brand": 15331243,
+    "null_category_code": 35413780,
+    "invalid_rows": 256773
+  },
+  "shuffles_before_write": 0,
+  "snapshot": {
+    "snapshot_id": 6685764873852814284,
+    "committed_at_utc": "2026-11-28 00:13:14.370",
+    "operation": "append",
+    "total_records": 109563335,
+    "total_data_files": 66,
+    "total_delete_files": 0,
+    "added_records": 109563335,
+    "deleted_records": null,
+    "total_files_size_bytes": 2392096656
+  },
+  "valid_rows": 109693970,
+  "silver_rows": 109563335,
+  "duplicates_removed": 130635,
+  "sessions": {
+    "sessions": 22996616.0,
+    "sessions_with_purchase": 1402758.0,
+    "sessions_ending_in_purchase": 689565.0,
+    "avg_events_per_session": 4.76,
+    "avg_session_duration_sec": 1100.1,
+    "median_session_duration_sec": 61.0,
+    "session_conversion_rate": 0.061
+  },
+  "layout": {
+    "data_files": 66,
+    "data_bytes": 2392096656,
+    "data_mb": 2281.3,
+    "partitions": 61
+  },
+  "total_sec": 1110.3
+}

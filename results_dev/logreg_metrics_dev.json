@@ -1,0 +1,136 @@
+{
+  "model": "LogisticRegression (class-weighted), threshold 0.5",
+  "task": "first cart of a product in a session -> purchased in the same session?",
+  "roc_auc": 0.7157,
+  "pr_auc": 0.6539,
+  "pr_auc_random_baseline": 0.426,
+  "accuracy": 0.6642,
+  "precision": 0.5996,
+  "recall": 0.6373,
+  "f1": 0.6179,
+  "confusion_matrix": {
+    "tp": 6355,
+    "fp": 4244,
+    "tn": 9191,
+    "fn": 3616,
+    "layout": "rows = actual (0, 1), cols = predicted (0, 1)",
+    "matrix": [
+      [
+        9191,
+        4244
+      ],
+      [
+        3616,
+        6355
+      ]
+    ]
+  },
+  "dataset": {
+    "train_rows": 93198,
+    "train_positive": 40314,
+    "train_positive_rate": 0.4326,
+    "test_rows": 23406,
+    "test_positive": 9971,
+    "test_positive_rate": 0.426,
+    "class_weight_positive": 1.1559,
+    "class_weight_negative": 0.8812,
+    "brands_kept": 300
+  },
+  "training": {
+    "iterations": 34,
+    "num_features": 332
+  },
+  "excluded_zero_purchase_days": [
+    "2019-11-15"
+  ],
+  "features_numeric": [
+    "log_price",
+    "price_rel_category",
+    "event_hour",
+    "day_of_week",
+    "is_weekend",
+    "sess_events_before",
+    "sess_views_before",
+    "sess_carts_before",
+    "product_views_before",
+    "log_sec_since_session_start",
+    "log_hist_sessions",
+    "log_hist_views",
+    "log_hist_carts",
+    "log_hist_purchases",
+    "has_purchase_history"
+  ],
+  "features_categorical": [
+    "main_category (one-hot)",
+    "brand (top 300 + other, one-hot)"
+  ],
+  "split": "80/20 by user_id hash (no customer in both sets)",
+  "params": {
+    "maxIter": 100,
+    "regParam": 0.01,
+    "elasticNetParam": 0.0
+  },
+  "intercept": 0.6447,
+  "top_coefficients": [
+    {
+      "feature": "f298",
+      "coef": -3.3022
+    },
+    {
+      "feature": "f179",
+      "coef": -2.3016
+    },
+    {
+      "feature": "f193",
+      "coef": -1.8553
+    },
+    {
+      "feature": "f246",
+      "coef": -1.6787
+    },
+    {
+      "feature": "f185",
+      "coef": -1.6261
+    },
+    {
+      "feature": "f253",
+      "coef": -1.5457
+    },
+    {
+      "feature": "f108",
+      "coef": -1.4128
+    },
+    {
+      "feature": "f224",
+      "coef": -1.3834
+    },
+    {
+      "feature": "f318",
+      "coef": 1.3573
+    },
+    {
+      "feature": "f258",
+      "coef": -1.3487
+    },
+    {
+      "feature": "f234",
+      "coef": -1.2491
+    },
+    {
+      "feature": "f243",
+      "coef": -1.2117
+    },
+    {
+      "feature": "f167",
+      "coef": -1.1891
+    },
+    {
+      "feature": "f310",
+      "coef": -1.1771
+    },
+    {
+      "feature": "f300",
+      "coef": -1.1717
+    }
+  ]
+}

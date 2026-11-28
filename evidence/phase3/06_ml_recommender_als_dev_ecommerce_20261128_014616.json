@@ -1,0 +1,74 @@
+{
+  "job": "06_ml_recommender_als_dev",
+  "namespace": "local.ecommerce",
+  "started_utc": "2026-11-28T01:36:32+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "build user-product interactions -> Iceberg": 47.5,
+    "dataset statistics": 9.2,
+    "train ALS (rank 20, 10 iterations)": 191.3,
+    "RMSE on held-out pairs (predicted preference vs 1.0)": 6.9,
+    "recommendForAllUsers(50) -> top 10 unseen": 196.7,
+    "ranking metrics vs most-popular baseline": 63.7,
+    "write gold_user_recommendations": 53.2,
+    "export sample + save model": 13.7
+  },
+  "params": {
+    "sample": 0.02,
+    "tag": "_dev",
+    "rank": 20,
+    "max_iter": 10,
+    "reg": 0.1,
+    "alpha": 10.0,
+    "min_item_users": 20,
+    "min_user_items": 3,
+    "max_user_items": 500,
+    "k": 10,
+    "candidates": 50
+  },
+  "interactions_table": {
+    "name": "local.ecommerce.ml_user_item_interactions_dev",
+    "snapshot_id": 430578999142853368,
+    "committed_at_utc": "2026-11-28 01:37:17.806",
+    "operation": "append",
+    "total_records": 703090,
+    "total_data_files": 16,
+    "total_delete_files": 0,
+    "added_records": 703090,
+    "deleted_records": null,
+    "total_files_size_bytes": 5058723
+  },
+  "dataset": {
+    "test": {
+      "pairs": 140454,
+      "users": 41444,
+      "items": 9160
+    },
+    "train": {
+      "pairs": 562636,
+      "users": 52713,
+      "items": 9188
+    },
+    "train_density": 0.00116169
+  },
+  "recommendations_table": {
+    "name": "local.ecommerce.gold_user_recommendations_dev",
+    "snapshot_id": 3052584971659383600,
+    "committed_at_utc": "2026-11-28 01:46:00.475",
+    "operation": "append",
+    "total_records": 527130,
+    "total_data_files": 13,
+    "total_delete_files": 0,
+    "added_records": 527130,
+    "deleted_records": null,
+    "total_files_size_bytes": 4167953
+  },
+  "metrics": {
+    "precision_at_10": 0.05287,
+    "recall_at_10": 0.19271,
+    "rmse_preference_heldout": 0.80448,
+    "lift_precision_vs_popularity": 2.33
+  },
+  "total_sec": 584.2
+}

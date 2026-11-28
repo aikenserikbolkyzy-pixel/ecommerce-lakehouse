@@ -1,0 +1,98 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 06:58:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 06:58:31 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 06:58:31 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 06:58:31 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 06:58:32 INFO ResourceUtils: ==============================================================
+26/11/28 06:58:32 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 06:58:32 INFO ResourceUtils: ==============================================================
+26/11/28 06:58:32 INFO SparkContext: Submitted application: phase3-06-ml-recommender-als
+26/11/28 06:58:32 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 06:58:32 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 06:58:32 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 06:58:32 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 06:58:32 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 06:58:33 INFO Utils: Successfully started service 'sparkDriver' on port 45757.
+26/11/28 06:58:33 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 06:58:33 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 06:58:34 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 06:58:34 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 06:58:34 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 06:58:34 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-af65d017-8aab-48e8-bcf4-37b44afea10c
+26/11/28 06:58:34 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 06:58:34 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 06:58:35 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 06:58:35 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:45757/files/common.py with timestamp 1795831111661
+26/11/28 06:58:35 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-e43a126e-9e91-4495-9e97-e951743bedc4/userFiles-b419c066-064f-44c1-982f-48780e0a488e/common.py
+26/11/28 06:58:35 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 06:58:35 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 06:58:35 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 06:58:35 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 06:58:35 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 06:58:35 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 06:58:35 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 06:58:35 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 06:58:36 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 06:58:37 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 228 ms (0 ms spent in bootstraps)
+26/11/28 06:58:38 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128065837-0018
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128065837-0018/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 06:58:38 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128065837-0018/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128065837-0018/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 06:58:38 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128065837-0018/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128065837-0018/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 06:58:38 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128065837-0018/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128065837-0018/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 06:58:38 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128065837-0018/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128065837-0018/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 06:58:38 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128065837-0018/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:58:38 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46241.
+26/11/28 06:58:38 INFO NettyBlockTransferService: Server created on master:46241
+26/11/28 06:58:38 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128065837-0018/3 is now RUNNING
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128065837-0018/4 is now RUNNING
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128065837-0018/0 is now RUNNING
+26/11/28 06:58:38 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 46241, None)
+26/11/28 06:58:38 INFO BlockManagerMasterEndpoint: Registering block manager master:46241 with 434.4 MiB RAM, BlockManagerId(driver, master, 46241, None)
+26/11/28 06:58:38 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 46241, None)
+26/11/28 06:58:38 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 46241, None)
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128065837-0018/1 is now RUNNING
+26/11/28 06:58:38 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128065837-0018/2 is now RUNNING
+26/11/28 06:58:41 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:57484) with ID 4, ResourceProfileId 0
+26/11/28 06:58:42 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:57470) with ID 3, ResourceProfileId 0
+26/11/28 06:58:42 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:39711 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 39711, None)
+26/11/28 06:58:42 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:41801 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 41801, None)
+26/11/28 06:58:44 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128065837-0018/events_1_app-20261128065837-0018.zstd
+26/11/28 06:58:46 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 06:58:52 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:47756) with ID 1, ResourceProfileId 0
+26/11/28 06:58:52 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:47752) with ID 2, ResourceProfileId 0
+26/11/28 06:58:53 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46641 with 660.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 46641, None)
+26/11/28 06:58:53 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:44675 with 660.0 MiB RAM, BlockManagerId(1, 192.168.100.15, 44675, None)
+26/11/28 06:58:56 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:47646) with ID 0, ResourceProfileId 0
+26/11/28 06:58:57 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:45845 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 45845, None)
+[01:59:05] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  ALS RECOMMENDER  local.ecommerce.silver_events -> local.ecommerce.ml_user_item_interactions -> ALS -> local.ecommerce.gold_user_recommendations
+==============================================================================
+[01:59:06] > build user-product interactions -> Iceberg
+[02:00:30]   build user-product interactions -> Iceberg: 84.8s
+[02:00:30] > dataset statistics
+[02:00:41]   dataset statistics: 10.3s
+[02:00:41]   {'test': {'pairs': 1975472, 'users': 470923, 'items': 58648}, 'train': {'pairs': 7897433, 'users': 585238, 'items': 58773}, 'train_density': 0.0002296}
+[02:00:41] > train ALS (rank 20, 10 iterations)
+[02:17:26]   train ALS (rank 20, 10 iterations): 1005.5s
+[02:17:26] > RMSE on held-out pairs (predicted preference vs 1.0)
+[02:17:36]   RMSE on held-out pairs (predicted preference vs 1.0): 9.6s
+[02:17:36] > recommendForAllUsers(50) -> top 10 unseen
+26/11/28 09:56:48 WARN DataStreamer: Exception for BP-584031413-192.168.100.47-1795812278793:blk_1073743781_2960
+java.io.IOException: Bad response ERROR for BP-584031413-192.168.100.47-1795812278793:blk_1073743781_2960 from datanode DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]
+	at org.apache.hadoop.hdfs.DataStreamer$ResponseProcessor.run(DataStreamer.java:1223)
+26/11/28 09:56:48 WARN DataStreamer: Error Recovery for BP-584031413-192.168.100.47-1795812278793:blk_1073743781_2960 in pipeline [DatanodeInfoWithStorage[192.168.100.47:9866,DS-1dd03d1e-d8bb-427f-ae26-2251a43788a1,DISK], DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK], DatanodeInfoWithStorage[192.168.100.67:9866,DS-00ae6ef2-4e76-40b1-9637-b30dc10defac,DISK]]: datanode 1(DatanodeInfoWithStorage[192.168.100.15:9866,DS-e75ad834-100e-415f-9827-e7a56112e0d9,DISK]) is bad.
+26/11/28 09:57:44 ERROR TaskSchedulerImpl: Lost executor 2 on 192.168.100.15: worker lost: Not receiving heartbeat for 60 seconds
+26/11/28 09:57:44 ERROR TaskSchedulerImpl: Lost executor 1 on 192.168.100.15: worker lost: Not receiving heartbeat for 60 seconds
+26/11/28 09:57:44 WARN BlockManagerMasterEndpoint: No more replicas available for rdd_64_5!
+26/11/28 09:57:44 WARN BlockManagerMasterEndpoint: No more replicas available for rdd_299_7!
+26/11/28 09:57:44 WARN BlockManagerMasterEndpoint: No more replicas available for rdd_299_8!
+26/11/28 09:57:44 WARN BlockManagerMasterEndpoint: No more replicas available for rdd_64_1!
+26/11/28 09:57:44 WARN BlockManagerMasterEndpoint: No more replicas available for rdd_64_6!

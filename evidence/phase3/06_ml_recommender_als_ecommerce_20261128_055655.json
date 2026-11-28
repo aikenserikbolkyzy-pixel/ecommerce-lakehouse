@@ -1,0 +1,77 @@
+{
+  "job": "06_ml_recommender_als",
+  "namespace": "local.ecommerce",
+  "started_utc": "2026-11-28T05:19:52+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "build user-product interactions -> Iceberg": 105.3,
+    "dataset statistics": 16.6,
+    "train ALS (rank 20, 10 iterations)": 1378.5,
+    "save model to HDFS": 9.6,
+    "RMSE on held-out pairs (predicted preference vs 1.0)": 17.8,
+    "recommendForUserSubset(20,000 users, 50) -> top 10 unseen": 559.6,
+    "ranking metrics vs most-popular baseline": 69.1,
+    "write gold_user_recommendations": 53.7,
+    "export sample": 2.1
+  },
+  "params": {
+    "sample": 0.2,
+    "tag": "",
+    "rank": 20,
+    "max_iter": 10,
+    "reg": 0.1,
+    "alpha": 10.0,
+    "min_item_users": 20,
+    "min_user_items": 3,
+    "max_user_items": 500,
+    "k": 10,
+    "candidates": 50,
+    "eval_users": 20000,
+    "reuse": false
+  },
+  "interactions_table": {
+    "name": "local.ecommerce.ml_user_item_interactions",
+    "snapshot_id": 4345791079973701286,
+    "committed_at_utc": "2026-11-28 05:21:32.340",
+    "operation": "append",
+    "total_records": 9872905,
+    "total_data_files": 36,
+    "total_delete_files": 0,
+    "added_records": 9872905,
+    "deleted_records": null,
+    "total_files_size_bytes": 45992017
+  },
+  "dataset": {
+    "test": {
+      "pairs": 1975472,
+      "users": 470923,
+      "items": 58656
+    },
+    "train": {
+      "pairs": 7897433,
+      "users": 585238,
+      "items": 58773
+    },
+    "train_density": 0.0002296
+  },
+  "recommendations_table": {
+    "name": "local.ecommerce.gold_user_recommendations",
+    "snapshot_id": 7889715846100678723,
+    "committed_at_utc": "2026-11-28 05:56:50.870",
+    "operation": "append",
+    "total_records": 200000,
+    "total_data_files": 9,
+    "total_delete_files": 0,
+    "added_records": 200000,
+    "deleted_records": null,
+    "total_files_size_bytes": 1681133
+  },
+  "metrics": {
+    "precision_at_10": 0.04661,
+    "recall_at_10": 0.15498,
+    "rmse_preference_heldout": 0.85793,
+    "lift_precision_vs_popularity": 2.32
+  },
+  "total_sec": 2223.7
+}

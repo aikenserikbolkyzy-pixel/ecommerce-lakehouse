@@ -1,0 +1,125 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 10:19:19 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 10:19:25 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 10:19:25 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 10:19:25 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 10:19:25 INFO ResourceUtils: ==============================================================
+26/11/28 10:19:25 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 10:19:25 INFO ResourceUtils: ==============================================================
+26/11/28 10:19:25 INFO SparkContext: Submitted application: phase3-06-ml-recommender-als
+26/11/28 10:19:25 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 10:19:25 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 10:19:25 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 10:19:25 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 10:19:25 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 10:19:26 INFO Utils: Successfully started service 'sparkDriver' on port 46491.
+26/11/28 10:19:26 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 10:19:26 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 10:19:26 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 10:19:26 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 10:19:26 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 10:19:26 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-ea6c47c6-30c4-4d28-b93f-2eb20530bcae
+26/11/28 10:19:26 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 10:19:26 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 10:19:27 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 10:19:27 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:46491/files/common.py with timestamp 1795843165218
+26/11/28 10:19:27 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-32dd8498-3ac9-4a33-a52e-e4f878c7f563/userFiles-0eacab77-4538-404a-a4db-1aa49e353b54/common.py
+26/11/28 10:19:27 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 10:19:27 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 10:19:27 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 10:19:27 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 10:19:27 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 10:19:27 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 10:19:27 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 10:19:27 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 10:19:28 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 10:19:28 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 166 ms (0 ms spent in bootstraps)
+26/11/28 10:19:29 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128101929-0020
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128101929-0020/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 10:19:29 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128101929-0020/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128101929-0020/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 10:19:29 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128101929-0020/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128101929-0020/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 10:19:29 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128101929-0020/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128101929-0020/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 10:19:29 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128101929-0020/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128101929-0020/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 10:19:29 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128101929-0020/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 10:19:29 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45687.
+26/11/28 10:19:29 INFO NettyBlockTransferService: Server created on master:45687
+26/11/28 10:19:29 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128101929-0020/3 is now RUNNING
+26/11/28 10:19:29 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 45687, None)
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128101929-0020/4 is now RUNNING
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128101929-0020/2 is now RUNNING
+26/11/28 10:19:29 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128101929-0020/1 is now RUNNING
+26/11/28 10:19:29 INFO BlockManagerMasterEndpoint: Registering block manager master:45687 with 434.4 MiB RAM, BlockManagerId(driver, master, 45687, None)
+26/11/28 10:19:29 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 45687, None)
+26/11/28 10:19:29 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 45687, None)
+26/11/28 10:19:30 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128101929-0020/0 is now RUNNING
+26/11/28 10:19:32 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:41658) with ID 4, ResourceProfileId 0
+26/11/28 10:19:32 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:41648) with ID 3, ResourceProfileId 0
+26/11/28 10:19:32 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:35485 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 35485, None)
+26/11/28 10:19:32 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:37151 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 37151, None)
+26/11/28 10:19:32 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:45276) with ID 2, ResourceProfileId 0
+26/11/28 10:19:32 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:45264) with ID 1, ResourceProfileId 0
+26/11/28 10:19:32 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:44813 with 660.0 MiB RAM, BlockManagerId(2, 192.168.100.15, 44813, None)
+26/11/28 10:19:32 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.15:46193 with 660.0 MiB RAM, BlockManagerId(1, 192.168.100.15, 46193, None)
+26/11/28 10:19:34 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128101929-0020/events_1_app-20261128101929-0020.zstd
+26/11/28 10:19:36 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 10:19:45 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:45088) with ID 0, ResourceProfileId 0
+26/11/28 10:19:46 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:46121 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 46121, None)
+[05:19:52] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  ALS RECOMMENDER  local.ecommerce.silver_events -> local.ecommerce.ml_user_item_interactions -> ALS -> local.ecommerce.gold_user_recommendations
+==============================================================================
+[05:19:52] > build user-product interactions -> Iceberg
+[05:21:37]   build user-product interactions -> Iceberg: 105.3s
+[05:21:38] > dataset statistics
+[05:21:54]   dataset statistics: 16.6s
+[05:21:54]   {'test': {'pairs': 1975472, 'users': 470923, 'items': 58656}, 'train': {'pairs': 7897433, 'users': 585238, 'items': 58773}, 'train_density': 0.0002296}
+[05:21:55] > train ALS (rank 20, 10 iterations)
+[05:44:53]   train ALS (rank 20, 10 iterations): 1378.5s
+[05:44:53] > save model to HDFS
+[05:45:03]   save model to HDFS: 9.6s
+[05:45:03] > RMSE on held-out pairs (predicted preference vs 1.0)
+[05:45:21]   RMSE on held-out pairs (predicted preference vs 1.0): 17.8s
+[05:45:29] > recommendForUserSubset(20,000 users, 50) -> top 10 unseen
+[05:54:48]   recommendForUserSubset(20,000 users, 50) -> top 10 unseen: 559.6s
+[05:54:48] > ranking metrics vs most-popular baseline
+[05:55:58]   ranking metrics vs most-popular baseline: 69.1s
+[05:55:58] > write gold_user_recommendations
+[05:56:51]   write gold_user_recommendations: 53.7s
+[05:56:51] > export sample
+[05:56:53]   exported 100 rows -> ./results/als_sample_recommendations.csv
+[05:56:53]   export sample: 2.1s
+[05:56:53]   wrote ./results/als_metrics.json
+
+==============================================================================
+  RESULTS
+==============================================================================
+  pairs train/test: 7897433 / 1975472
+  RMSE (preference, held-out): 0.85793
+  ALS         all interactions : P@10 0.04661  R@10 0.15498  NDCG@10 0.11937  users 20,000
+  Popularity  all interactions : P@10 0.02008  R@10 0.06671  NDCG@10 0.04889  users 20,000
+  ALS         carts/purchases  : P@10 0.03152  R@10 0.25224  NDCG@10 0.15877  users 2,903
+  Popularity  carts/purchases  : P@10 0.01543  R@10 0.1161  NDCG@10 0.06648  users 2,903
+  lift of ALS over popularity (P@10): 2.32
++---------+----+----------+-------+-------------+-----+---------+--------------------------+
+|user_id  |rank|product_id|score  |main_category|brand|avg_price|generated_at              |
++---------+----+----------+-------+-------------+-----+---------+--------------------------+
+|228192583|1   |2702277   |0.25485|appliances   |lg   |465.84   |2026-11-28 05:55:58.813136|
+|228192583|2   |1004838   |0.25291|electronics  |oppo |165.63   |2026-11-28 05:55:58.813136|
+|228192583|3   |1005238   |0.24818|electronics  |oppo |305.03   |2026-11-28 05:55:58.813136|
+|228192583|4   |1005205   |0.23878|electronics  |oppo |238.23   |2026-11-28 05:55:58.813136|
+|228192583|5   |2701657   |0.23508|appliances   |beko |241.58   |2026-11-28 05:55:58.813136|
+|229991854|1   |1307073   |0.02785|computers    |acer |702.89   |2026-11-28 05:55:58.813136|
+|229991854|2   |1307310   |0.02589|computers    |acer |290.02   |2026-11-28 05:55:58.813136|
+|229991854|3   |1306650   |0.02481|computers    |acer |428.93   |2026-11-28 05:55:58.813136|
+|229991854|4   |1307076   |0.02429|computers    |asus |680.62   |2026-11-28 05:55:58.813136|
+|229991854|5   |1307187   |0.02249|computers    |acer |866.5    |2026-11-28 05:55:58.813136|
++---------+----+----------+-------+-------------+-----+---------+--------------------------+
+only showing top 10 rows
+[05:56:55] Evidence written to /bigdata/evidence/phase3/06_ml_recommender_als_ecommerce_20261128_055655.json  (total 2223.7s)

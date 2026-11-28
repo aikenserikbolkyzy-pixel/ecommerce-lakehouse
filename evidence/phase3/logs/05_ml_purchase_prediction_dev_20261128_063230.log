@@ -1,0 +1,113 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/11/28 06:32:32 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/11/28 06:32:33 INFO SparkContext: Running Spark version 4.1.4
+26/11/28 06:32:33 INFO SparkContext: OS info Linux, 6.18.58.1-microsoft-standard-WSL2, amd64
+26/11/28 06:32:33 INFO SparkContext: Java version 17.0.21.1+2-1-26.04.1-Ubuntu
+26/11/28 06:32:33 INFO ResourceUtils: ==============================================================
+26/11/28 06:32:33 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/28 06:32:33 INFO ResourceUtils: ==============================================================
+26/11/28 06:32:33 INFO SparkContext: Submitted application: phase3-05-ml-purchase-prediction
+26/11/28 06:32:34 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 06:32:34 INFO Utils: Successfully started service 'sparkDriver' on port 45393.
+26/11/28 06:32:34 INFO SparkEnv: Registering MapOutputTracker
+26/11/28 06:32:34 INFO SparkEnv: Registering BlockManagerMaster
+26/11/28 06:32:34 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/28 06:32:34 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/28 06:32:34 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/28 06:32:34 INFO DiskBlockManager: Created local directory at /bigdata/spark/local/blockmgr-b5cdcada-7617-4dbd-b0c4-3e8e70864db5
+26/11/28 06:32:34 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/28 06:32:34 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/11/28 06:32:34 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/28 06:32:34 INFO SparkContext: Added file file:///home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py at spark://master:45393/files/common.py with timestamp 1795829553900
+26/11/28 06:32:34 INFO Utils: Copying /home/aykkenn/ecommerce-lakehouse/jobs/phase2/common.py to /bigdata/spark/local/spark-a9f7070e-3b26-4f47-bf05-ce780695ba13/userFiles-f1e06901-f5bf-4535-bd70-3ce85ba19d70/common.py
+26/11/28 06:32:34 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1400, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/28 06:32:34 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/11/28 06:32:34 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/28 06:32:34 INFO SecurityManager: Changing view acls to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: Changing modify acls to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: Changing view acls groups to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: Changing modify acls groups to: aykkenn
+26/11/28 06:32:34 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: aykkenn groups with view permissions: EMPTY; users with modify permissions: aykkenn; groups with modify permissions: EMPTY; RPC SSL disabled
+26/11/28 06:32:34 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://master:7077...
+26/11/28 06:32:34 INFO TransportClientFactory: Successfully created connection to master/192.168.100.47:7077 after 30 ms (0 ms spent in bootstraps)
+26/11/28 06:32:35 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261128063235-0015
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128063235-0015/0 on worker-20261128042045-192.168.100.47-46663 (192.168.100.47:46663) with 2 core(s)
+26/11/28 06:32:35 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128063235-0015/0 on hostPort 192.168.100.47:46663 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128063235-0015/1 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 06:32:35 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128063235-0015/1 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128063235-0015/2 on worker-20261128042018-192.168.100.15-45729 (192.168.100.15:45729) with 2 core(s)
+26/11/28 06:32:35 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128063235-0015/2 on hostPort 192.168.100.15:45729 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128063235-0015/3 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 06:32:35 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128063235-0015/3 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261128063235-0015/4 on worker-20261128042012-192.168.100.67-37017 (192.168.100.67:37017) with 2 core(s)
+26/11/28 06:32:35 INFO StandaloneSchedulerBackend: Granted executor ID app-20261128063235-0015/4 on hostPort 192.168.100.67:37017 with 2 core(s), 1400.0 MiB RAM
+26/11/28 06:32:35 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45257.
+26/11/28 06:32:35 INFO NettyBlockTransferService: Server created on master:45257
+26/11/28 06:32:35 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/28 06:32:35 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, master, 45257, None)
+26/11/28 06:32:35 INFO BlockManagerMasterEndpoint: Registering block manager master:45257 with 434.4 MiB RAM, BlockManagerId(driver, master, 45257, None)
+26/11/28 06:32:35 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, master, 45257, None)
+26/11/28 06:32:35 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, master, 45257, None)
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128063235-0015/0 is now RUNNING
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128063235-0015/3 is now RUNNING
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128063235-0015/2 is now RUNNING
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128063235-0015/1 is now RUNNING
+26/11/28 06:32:35 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261128063235-0015/4 is now RUNNING
+26/11/28 06:32:36 INFO RollingEventLogFilesWriter: Logging events to hdfs://master:9000/spark-logs/eventlog_v2_app-20261128063235-0015/events_1_app-20261128063235-0015.zstd
+26/11/28 06:32:36 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/11/28 06:32:38 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.47:45874) with ID 0, ResourceProfileId 0
+26/11/28 06:32:38 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.47:46613 with 660.0 MiB RAM, BlockManagerId(0, 192.168.100.47, 46613, None)
+26/11/28 06:32:39 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:59166) with ID 3, ResourceProfileId 0
+26/11/28 06:32:39 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.67:59164) with ID 4, ResourceProfileId 0
+26/11/28 06:32:39 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.100.15:46478) with ID 1, ResourceProfileId 0
+26/11/28 06:32:39 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:42715 with 660.0 MiB RAM, BlockManagerId(4, 192.168.100.67, 42715, None)
+26/11/28 06:32:39 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.100.67:43237 with 660.0 MiB RAM, BlockManagerId(3, 192.168.100.67, 43237, None)
+[01:32:41] Spark 4.1.4 | master=spark://master:7077 | namespace=local.ecommerce | warehouse=hdfs://master:9000/warehouse/iceberg
+
+==============================================================================
+  PURCHASE PREDICTION  local.ecommerce.silver_events -> local.ecommerce.ml_cart_features_dev -> LogisticRegression
+==============================================================================
+[01:32:53]   excluded days with carts but no purchases: ['2019-11-15']
+[01:32:53] > feature engineering -> Iceberg feature table
+[01:34:11]   feature engineering -> Iceberg feature table: 78.3s
+[01:34:11] > dataset statistics + brand grouping + class weights
+[01:34:15]   dataset statistics + brand grouping + class weights: 3.6s
+[01:34:15]   train 93,198 rows (43.26% positive) | test 23,406 rows | weights pos 1.156 neg 0.881
+26/11/28 06:34:16 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[01:34:16] > train Pipeline (indexers + one-hot + assembler + weighted LogisticRegression)
+[01:35:17]   train Pipeline (indexers + one-hot + assembler + weighted LogisticRegression): 61.4s
+[01:35:17] > evaluate on test set
+[01:35:42]   evaluate on test set: 25.1s
+[01:35:42]   wrote ./results_dev/logreg_metrics_dev.json
+[01:35:42]   wrote ./results_dev/logreg_coefficients_dev.csv
+[01:35:42]   wrote ./results_dev/logreg_curve_points_dev.csv
+[01:35:42] > save model to HDFS
+[01:35:52]   save model to HDFS: 10.0s
+
+==============================================================================
+  RESULTS
+==============================================================================
+  ROC-AUC  0.7157
+  PR-AUC   0.6539   (random baseline = positive rate 0.426)
+  Accuracy 0.6642   Precision 0.5996   Recall 0.6373   F1 0.6179
+  Confusion matrix (rows actual 0/1, cols predicted 0/1):
+      [[    9,191     4,244]
+       [    3,616     6,355]]
+  Top coefficients:
+      -3.3022  f298
+      -2.3016  f179
+      -1.8553  f193
+      -1.6787  f246
+      -1.6261  f185
+      -1.5457  f253
+      -1.4128  f108
+      -1.3834  f224
+      +1.3573  f318
+      -1.3487  f258
+[01:35:52] Evidence written to /bigdata/evidence/phase3/05_ml_purchase_prediction_dev_ecommerce_20261128_013552.json  (total 191.4s)
+26/11/28 06:35:53 WARN Dispatcher: Message RemoteProcessDisconnected(192.168.100.15:46504) dropped. Could not find BlockManagerMaster.

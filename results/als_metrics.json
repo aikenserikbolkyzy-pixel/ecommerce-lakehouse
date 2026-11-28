@@ -1,0 +1,74 @@
+{
+  "model": "ALS implicitPrefs=True",
+  "interaction_weights": {
+    "view": 1.0,
+    "cart": 3.0,
+    "purchase": 5.0
+  },
+  "rating": "log1p(sum of weights) per (user, product)",
+  "params": {
+    "rank": 20,
+    "maxIter": 10,
+    "regParam": 0.1,
+    "alpha": 10.0,
+    "user_sample_fraction": 0.2,
+    "min_item_users": 20,
+    "user_items_range": [
+      3,
+      500
+    ]
+  },
+  "dataset": {
+    "test": {
+      "pairs": 1975472,
+      "users": 470923,
+      "items": 58656
+    },
+    "train": {
+      "pairs": 7897433,
+      "users": 585238,
+      "items": 58773
+    },
+    "train_density": 0.0002296
+  },
+  "rmse_preference_heldout": 0.85793,
+  "rmse_note": "implicit ALS predicts preference (0..1), so RMSE is measured against 1.0 on held-out interactions; ranking metrics below are the main quality measure",
+  "users_with_recommendations": 20000,
+  "recommendation_api": "recommendForUserSubset(20,000 users, 50)",
+  "evaluation_users_scope": "deterministic sample of 20,000 users present in train and test",
+  "model_reused": false,
+  "evaluation": "top-10 recommendations excluding products seen in train, vs held-out 20 %",
+  "als": {
+    "all_interactions": {
+      "precision_at_10": 0.04661,
+      "recall_at_10": 0.15498,
+      "ndcg_at_10": 0.11937,
+      "users_evaluated": 20000
+    },
+    "carts_and_purchases": {
+      "precision_at_10": 0.03152,
+      "recall_at_10": 0.25224,
+      "ndcg_at_10": 0.15877,
+      "users_evaluated": 2903
+    }
+  },
+  "popularity_baseline": {
+    "all_interactions": {
+      "precision_at_10": 0.02008,
+      "recall_at_10": 0.06671,
+      "ndcg_at_10": 0.04889,
+      "users_evaluated": 20000
+    },
+    "carts_and_purchases": {
+      "precision_at_10": 0.01543,
+      "recall_at_10": 0.1161,
+      "ndcg_at_10": 0.06648,
+      "users_evaluated": 2903
+    }
+  },
+  "model_path": "hdfs://master:9000/models/als_implicit",
+  "sample_csv": "/home/aykkenn/ecommerce-lakehouse/results/als_sample_recommendations.csv",
+  "precision_at_10": 0.04661,
+  "recall_at_10": 0.15498,
+  "lift_precision_vs_popularity": 2.32
+}

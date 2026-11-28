@@ -1,0 +1,55 @@
+{
+  "job": "05_ml_purchase_prediction",
+  "namespace": "local.ecommerce",
+  "started_utc": "2026-11-28T01:47:35+00:00",
+  "spark_version": "4.1.4",
+  "default_parallelism": 24,
+  "steps_sec": {
+    "feature engineering -> Iceberg feature table": 440.5,
+    "dataset statistics + brand grouping + class weights": 7.7,
+    "train Pipeline (indexers + one-hot + assembler + weighted LogisticRegression)": 119.1,
+    "evaluate on test set": 38.9,
+    "save model to HDFS": 11.0
+  },
+  "sample_fraction": 1.0,
+  "excluded_zero_purchase_days": [
+    "2019-11-15"
+  ],
+  "feature_table": {
+    "name": "local.ecommerce.ml_cart_features",
+    "snapshot_id": 8023703435668234175,
+    "committed_at_utc": "2026-11-28 01:55:22.195",
+    "operation": "append",
+    "total_records": 2358999,
+    "total_data_files": 48,
+    "total_delete_files": 0,
+    "added_records": 2358999,
+    "deleted_records": null,
+    "total_files_size_bytes": 111821356
+  },
+  "dataset": {
+    "train_rows": 1886192,
+    "train_positive": 812637,
+    "train_positive_rate": 0.4308,
+    "test_rows": 472807,
+    "test_positive": 203921,
+    "test_positive_rate": 0.4313,
+    "class_weight_positive": 1.1605,
+    "class_weight_negative": 0.8785,
+    "brands_kept": 300
+  },
+  "training": {
+    "iterations": 36,
+    "num_features": 332
+  },
+  "model_path": "hdfs://master:9000/models/logreg_cart_purchase",
+  "metrics": {
+    "roc_auc": 0.7199,
+    "pr_auc": 0.6639,
+    "accuracy": 0.6635,
+    "precision": 0.6028,
+    "recall": 0.6444,
+    "f1": 0.6229
+  },
+  "total_sec": 644.6
+}

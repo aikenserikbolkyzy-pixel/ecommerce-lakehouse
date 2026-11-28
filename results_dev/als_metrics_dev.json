@@ -1,0 +1,71 @@
+{
+  "model": "ALS implicitPrefs=True",
+  "interaction_weights": {
+    "view": 1.0,
+    "cart": 3.0,
+    "purchase": 5.0
+  },
+  "rating": "log1p(sum of weights) per (user, product)",
+  "params": {
+    "rank": 20,
+    "maxIter": 10,
+    "regParam": 0.1,
+    "alpha": 10.0,
+    "user_sample_fraction": 0.02,
+    "min_item_users": 20,
+    "user_items_range": [
+      3,
+      500
+    ]
+  },
+  "dataset": {
+    "test": {
+      "pairs": 140454,
+      "users": 41444,
+      "items": 9160
+    },
+    "train": {
+      "pairs": 562636,
+      "users": 52713,
+      "items": 9188
+    },
+    "train_density": 0.00116169
+  },
+  "rmse_preference_heldout": 0.80448,
+  "rmse_note": "implicit ALS predicts preference (0..1), so RMSE is measured against 1.0 on held-out interactions; ranking metrics below are the main quality measure",
+  "users_with_recommendations": 52713,
+  "evaluation": "top-10 recommendations excluding products seen in train, vs held-out 20 %",
+  "als": {
+    "all_interactions": {
+      "precision_at_10": 0.05287,
+      "recall_at_10": 0.19271,
+      "ndcg_at_10": 0.14297,
+      "users_evaluated": 41376
+    },
+    "carts_and_purchases": {
+      "precision_at_10": 0.03676,
+      "recall_at_10": 0.30174,
+      "ndcg_at_10": 0.19221,
+      "users_evaluated": 5661
+    }
+  },
+  "popularity_baseline": {
+    "all_interactions": {
+      "precision_at_10": 0.0227,
+      "recall_at_10": 0.08196,
+      "ndcg_at_10": 0.05837,
+      "users_evaluated": 41376
+    },
+    "carts_and_purchases": {
+      "precision_at_10": 0.01878,
+      "recall_at_10": 0.14958,
+      "ndcg_at_10": 0.08849,
+      "users_evaluated": 5661
+    }
+  },
+  "model_path": "hdfs://master:9000/models/als_implicit_dev",
+  "sample_csv": "/home/aykkenn/ecommerce-lakehouse/results_dev/als_sample_recommendations_dev.csv",
+  "precision_at_10": 0.05287,
+  "recall_at_10": 0.19271,
+  "lift_precision_vs_popularity": 2.33
+}
